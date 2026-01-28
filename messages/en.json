@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "title": "itFolks Tech | Software Development Consultancy",
+    "description": "We transform ideas into high-quality code. Specialized in web development, mobile apps, and Python backend solutions."
+  },
+  "nav": {
+    "services": "Services",
+    "team": "Team",
+    "projects": "Projects",
+    "techStack": "Tech Stack",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Software Consultancy",
+    "title": "We Transform Ideas",
+    "titleHighlight": "Into Code",
+    "description": "A technology consultancy focused on agile and modern development. We combine technical expertise with a human approach to deliver solutions that make a difference.",
+    "cta": "Get in Touch",
+    "ctaSecondary": "Our Services"
+  },
+  "services": {
+    "sectionTag": "What We Do",
+    "title": "Our Expertise",
+    "description": "We offer specialized solutions to accelerate your digital transformation",
+    "items": {
+      "web": {
+        "title": "Web Development",
+        "description": "Modern, responsive applications built with React, Vue.js, and Next.js. Pixel-perfect interfaces with exceptional user experience."
+      },
+      "mobile": {
+        "title": "Mobile Apps",
+        "description": "Native and cross-platform applications with Flutter and React Native. Seamless experiences on iOS and Android."
+      },
+      "backend": {
+        "title": "Python Backend",
+        "description": "Robust and scalable APIs with Python. Data automation, integrations, and high-performance processing systems."
+      },
+      "payments": {
+        "title": "Payment Integrations",
+        "description": "Secure implementation of Stripe and other payment gateways. Subscriptions, marketplaces, and complete checkout flows."
+      }
+    }
+  },
+  "team": {
+    "sectionTag": "Who We Are",
+    "title": "Meet Our Team",
+    "description": "Passionate professionals who turn complex challenges into elegant solutions",
+    "members": {
+      "raul": {
+        "name": "Raul",
+        "role": "Tech Lead",
+        "level": "Mid/Lead",
+        "specialty": "Frontend & Mobile Specialist",
+        "bio": "Leading frontend architecture and mobile development with a focus on user experience and code quality."
+      },
+      "leo": {
+        "name": "Leo",
+        "role": "Frontend Developer",
+        "specialty": "Next.js & React Native Specialist",
+        "bio": "Building modern web applications and mobile experiences with Next.js, React, and React Native."
+      },
+      "higor": {
+        "name": "Higor",
+        "role": "Backend Developer",
+        "specialty": "Node.js, Strapi & Python",
+        "bio": "Expert in building robust APIs with Node.js, Strapi CMS, and Python backend solutions."
+      },
+      "pythonSquad": {
+        "name": "Python Squad",
+        "role": "+2 Developers",
+        "specialty": "Data & Automation",
+        "bio": "A dedicated team focused on data engineering, process automation, and Python-based solutions."
+      }
+    }
+  },
+  "projects": {
+    "sectionTag": "Our Work",
+    "title": "Featured Projects",
+    "description": "A selection of our recent work showcasing our expertise",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "items": {
+      "ecommerce": {
+        "title": "E-Commerce Platform",
+        "description": "Full-stack e-commerce solution with Stripe integration, real-time inventory, and admin dashboard.",
+        "tags": ["Next.js", "Stripe", "PostgreSQL"]
+      },
+      "dashboard": {
+        "title": "Analytics Dashboard",
+        "description": "Real-time analytics platform with interactive charts, data visualization, and automated reports.",
+        "tags": ["React", "Python", "D3.js"]
+      },
+      "mobile": {
+        "title": "Fitness App",
+        "description": "Cross-platform mobile app with workout tracking, social features, and health integrations.",
+        "tags": ["React Native", "Node.js", "MongoDB"]
+      }
+    }
+  },
+  "techStack": {
+    "sectionTag": "Our Tools",
+    "title": "Technologies We Master",
+    "description": "We use the best tools in the market to deliver cutting-edge solutions"
+  },
+  "footer": {
+    "description": "Technology consultancy focused on agile and modern development.",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with",
+    "by": "by itFolks"
+  }
+}

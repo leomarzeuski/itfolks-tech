@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "title": "itFolks Tech | Consultoria de Desenvolvimento de Software",
+    "description": "Transformamos ideias em codigo de alta qualidade. Especializados em desenvolvimento web, apps mobile e solucoes backend Python."
+  },
+  "nav": {
+    "services": "Servicos",
+    "team": "Time",
+    "projects": "Projetos",
+    "techStack": "Tecnologias",
+    "contact": "Contato"
+  },
+  "hero": {
+    "badge": "Consultoria de Software",
+    "title": "Transformamos Ideias",
+    "titleHighlight": "Em Codigo",
+    "description": "Uma consultoria de tecnologia focada em desenvolvimento agil e moderno. Combinamos expertise tecnica com uma abordagem humana para entregar solucoes que fazem a diferenca.",
+    "cta": "Fale Conosco",
+    "ctaSecondary": "Nossos Servicos"
+  },
+  "services": {
+    "sectionTag": "O Que Fazemos",
+    "title": "Nossa Expertise",
+    "description": "Oferecemos solucoes especializadas para acelerar sua transformacao digital",
+    "items": {
+      "web": {
+        "title": "Desenvolvimento Web",
+        "description": "Aplicacoes modernas e responsivas construidas com React, Vue.js e Next.js. Interfaces pixel-perfect com experiencia de usuario excepcional."
+      },
+      "mobile": {
+        "title": "Apps Mobile",
+        "description": "Aplicativos nativos e cross-platform com Flutter e React Native. Experiencias perfeitas no iOS e Android."
+      },
+      "backend": {
+        "title": "Backend Python",
+        "description": "APIs robustas e escalaveis com Python. Automacao de dados, integracoes e sistemas de processamento de alta performance."
+      },
+      "payments": {
+        "title": "Integracoes de Pagamento",
+        "description": "Implementacao segura de Stripe e outros gateways de pagamento. Assinaturas, marketplaces e fluxos de checkout completos."
+      }
+    }
+  },
+  "team": {
+    "sectionTag": "Quem Somos",
+    "title": "Conheca Nosso Time",
+    "description": "Profissionais apaixonados que transformam desafios complexos em solucoes elegantes",
+    "members": {
+      "raul": {
+        "name": "Raul",
+        "role": "Tech Lead",
+        "level": "Mid/Lead",
+        "specialty": "Especialista Frontend & Mobile",
+        "bio": "Liderando arquitetura frontend e desenvolvimento mobile com foco em experiencia do usuario e qualidade de codigo."
+      },
+      "leo": {
+        "name": "Leo",
+        "role": "Frontend Developer",
+        "specialty": "Especialista Next.js & React Native",
+        "bio": "Construindo aplicacoes web modernas e experiencias mobile com Next.js, React e React Native."
+      },
+      "higor": {
+        "name": "Higor",
+        "role": "Backend Developer",
+        "specialty": "Node.js, Strapi & Python",
+        "bio": "Expert em construir APIs robustas com Node.js, Strapi CMS e solucoes backend Python."
+      },
+      "pythonSquad": {
+        "name": "Python Squad",
+        "role": "+2 Desenvolvedores",
+        "specialty": "Dados & Automacao",
+        "bio": "Um time dedicado focado em engenharia de dados, automacao de processos e solucoes baseadas em Python."
+      }
+    }
+  },
+  "projects": {
+    "sectionTag": "Nosso Trabalho",
+    "title": "Projetos em Destaque",
+    "description": "Uma selecao dos nossos trabalhos recentes mostrando nossa expertise",
+    "viewProject": "Ver Projeto",
+    "viewCode": "Ver Codigo",
+    "items": {
+      "ecommerce": {
+        "title": "Plataforma E-Commerce",
+        "description": "Solucao full-stack de e-commerce com integracao Stripe, inventario em tempo real e painel admin.",
+        "tags": ["Next.js", "Stripe", "PostgreSQL"]
+      },
+      "dashboard": {
+        "title": "Dashboard Analytics",
+        "description": "Plataforma de analytics em tempo real com graficos interativos, visualizacao de dados e relatorios automatizados.",
+        "tags": ["React", "Python", "D3.js"]
+      },
+      "mobile": {
+        "title": "App Fitness",
+        "description": "App mobile cross-platform com tracking de treinos, recursos sociais e integracoes de saude.",
+        "tags": ["React Native", "Node.js", "MongoDB"]
+      }
+    }
+  },
+  "techStack": {
+    "sectionTag": "Nossas Ferramentas",
+    "title": "Tecnologias que Dominamos",
+    "description": "Usamos as melhores ferramentas do mercado para entregar solucoes de ponta"
+  },
+  "footer": {
+    "description": "Consultoria de tecnologia focada em desenvolvimento agil e moderno.",
+    "rights": "Todos os direitos reservados.",
+    "madeWith": "Feito com",
+    "by": "por itFolks"
+  }
+}
