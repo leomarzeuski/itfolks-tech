@@ -1,27 +1,28 @@
 {
   "metadata": {
-    "title": "itFolks Tech | Consultoria de Desenvolvimento de Software",
-    "description": "Transformamos ideias em codigo de alta qualidade. Especializados em desenvolvimento web, apps mobile e solucoes backend Python."
+    "title": "itFolks Tech | Consultoria de Desenvolvimento de Software & IA",
+    "description": "Transformamos ideias em codigo de alta qualidade. Especializados em desenvolvimento web, apps mobile, solucoes backend Python, IA generativa e agentes inteligentes."
   },
   "nav": {
     "services": "Servicos",
     "team": "Time",
     "projects": "Projetos",
+    "methodology": "Metodologia",
     "techStack": "Tecnologias",
     "contact": "Contato"
   },
   "hero": {
-    "badge": "Consultoria de Software",
+    "badge": "Consultoria de Software & IA",
     "title": "Transformamos Ideias",
     "titleHighlight": "Em Codigo",
-    "description": "Uma consultoria de tecnologia focada em desenvolvimento agil e moderno. Combinamos expertise tecnica com uma abordagem humana para entregar solucoes que fazem a diferenca.",
+    "description": "Uma consultoria de tecnologia focada em desenvolvimento agil e moderno. Combinamos expertise tecnica com IA generativa e agentes inteligentes para entregar solucoes que fazem a diferenca.",
     "cta": "Fale Conosco",
     "ctaSecondary": "Nossos Servicos"
   },
   "services": {
     "sectionTag": "O Que Fazemos",
     "title": "Nossa Expertise",
-    "description": "Oferecemos solucoes especializadas para acelerar sua transformacao digital",
+    "description": "Oferecemos solucoes especializadas para acelerar sua transformacao digital com tecnologias modernas e inteligencia artificial",
     "items": {
       "web": {
         "title": "Desenvolvimento Web",
@@ -38,62 +39,102 @@
       "payments": {
         "title": "Integracoes de Pagamento",
         "description": "Implementacao segura de Stripe e outros gateways de pagamento. Assinaturas, marketplaces e fluxos de checkout completos."
+      },
+      "ai": {
+        "title": "IA & Automacao",
+        "description": "Solucoes com IA generativa, agentes inteligentes e automacao de workflows com n8n. Transformamos processos manuais em fluxos inteligentes e autonomos."
       }
     }
   },
   "team": {
     "sectionTag": "Quem Somos",
     "title": "Conheca Nosso Time",
-    "description": "Profissionais apaixonados que transformam desafios complexos em solucoes elegantes",
+    "description": "Profissionais apaixonados especializados em IA generativa e agentes inteligentes, transformando desafios complexos em solucoes elegantes",
     "members": {
       "raul": {
         "name": "Raul",
-        "role": "Tech Lead",
-        "level": "Mid/Lead",
-        "specialty": "Especialista Frontend & Mobile",
-        "bio": "Liderando arquitetura frontend e desenvolvimento mobile com foco em experiencia do usuario e qualidade de codigo."
+        "role": "Tech Lead / Scrum Master",
+        "specialty": "Frontend, Mobile & IA",
+        "bio": "Liderando arquitetura frontend, desenvolvimento mobile e projetos de IA. Especialista em IA generativa, agentes inteligentes e gestao agil com Scrum."
       },
       "leo": {
-        "name": "Leo",
+        "name": "Leonardo",
         "role": "Frontend Developer",
-        "specialty": "Especialista Next.js & React Native",
-        "bio": "Construindo aplicacoes web modernas e experiencias mobile com Next.js, React e React Native."
+        "specialty": "Next.js, React Native & IA",
+        "bio": "Construindo aplicacoes web modernas e experiencias mobile com Next.js, React e React Native. Experiencia com n8n e IA generativa."
       },
       "higor": {
         "name": "Higor",
         "role": "Backend Developer",
-        "specialty": "Node.js, Strapi & Python",
-        "bio": "Expert em construir APIs robustas com Node.js, Strapi CMS e solucoes backend Python."
+        "specialty": "Node.js, Strapi, n8n & IA",
+        "bio": "Expert em construir APIs robustas com Node.js, Strapi CMS, automacoes com n8n e solucoes de IA generativa e agentes inteligentes."
       },
-      "pythonSquad": {
-        "name": "Python Squad",
-        "role": "+2 Desenvolvedores",
-        "specialty": "Dados & Automacao",
-        "bio": "Um time dedicado focado em engenharia de dados, automacao de processos e solucoes baseadas em Python."
+      "athos": {
+        "name": "Athos",
+        "role": "Python Developer",
+        "specialty": "Python, Data & IA",
+        "bio": "Desenvolvedor Python focado em engenharia de dados, automacao de processos e implementacao de solucoes com IA generativa."
+      },
+      "pedro": {
+        "name": "Pedro",
+        "role": "Python Developer",
+        "specialty": "Python, Automacao & IA",
+        "bio": "Desenvolvedor Python especializado em automacao, processamento de dados e integracao de agentes inteligentes e IA generativa."
       }
     }
   },
   "projects": {
     "sectionTag": "Nosso Trabalho",
-    "title": "Projetos em Destaque",
-    "description": "Uma selecao dos nossos trabalhos recentes mostrando nossa expertise",
+    "title": "Projetos Reais",
+    "description": "Cases reais com a dor do cliente, como resolvemos e as tecnologias utilizadas",
     "viewProject": "Ver Projeto",
     "viewCode": "Ver Codigo",
+    "painLabel": "Dor do Cliente",
+    "solutionLabel": "Nossa Solucao",
+    "techLabel": "Tecnologias",
     "items": {
-      "ecommerce": {
-        "title": "Plataforma E-Commerce",
-        "description": "Solucao full-stack de e-commerce com integracao Stripe, inventario em tempo real e painel admin.",
-        "tags": ["Next.js", "Stripe", "PostgreSQL"]
+      "scheduling": {
+        "title": "Sistema de Agendamento",
+        "pain": "Cliente enfrentava problemas com agendamentos manuais: conflitos de horarios, no-shows frequentes e perda de tempo com gestao de agenda.",
+        "solution": "Desenvolvemos um site e sistema de agendamento automatico integrado com calendario, notificacoes automaticas e gestao inteligente de horarios.",
+        "tags": ["Cal.com", "n8n", "Next.js", "Strapi", "Node.js"]
       },
-      "dashboard": {
-        "title": "Dashboard Analytics",
-        "description": "Plataforma de analytics em tempo real com graficos interativos, visualizacao de dados e relatorios automatizados.",
-        "tags": ["React", "Python", "D3.js"]
+      "trmil": {
+        "title": "Trmil",
+        "pain": "Empresa precisava de presenca digital profissional para atrair novos clientes e apresentar seus servicos de forma moderna e confiavel.",
+        "solution": "Criamos um site institucional moderno, responsivo e otimizado para SEO, com design alinhado a identidade da marca.",
+        "tags": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
       },
-      "mobile": {
-        "title": "App Fitness",
-        "description": "App mobile cross-platform com tracking de treinos, recursos sociais e integracoes de saude.",
-        "tags": ["React Native", "Node.js", "MongoDB"]
+      "prontu": {
+        "title": "Prontu / Tupuca",
+        "pain": "Necessidade de conectar vendedores e compradores em uma plataforma digital eficiente, com gestao de pedidos e pagamentos.",
+        "solution": "Desenvolvemos uma plataforma marketplace completa com cadastro de vendedores, catalogo de produtos, carrinho, checkout e painel administrativo.",
+        "tags": ["React", "Node.js", "PostgreSQL", "Stripe", "REST API"]
+      },
+      "meihub": {
+        "title": "Mei Hub",
+        "pain": "Microempreendedores individuais (MEI) tinham dificuldade em gerenciar suas obrigacoes fiscais, financas e documentos em um so lugar.",
+        "solution": "Criamos um app mobile completo para gestao do MEI com controle financeiro, lembretes de obrigacoes e emissao de documentos.",
+        "tags": ["React Native", "Node.js", "Python", "MongoDB"]
+      }
+    }
+  },
+  "methodology": {
+    "sectionTag": "Como Trabalhamos",
+    "title": "Nossa Metodologia",
+    "description": "Utilizamos as melhores praticas ageis para garantir entregas com qualidade e previsibilidade",
+    "items": {
+      "scrum": {
+        "title": "Scrum",
+        "description": "Sprints bem definidas com cerimonias de planejamento, daily standups, reviews e retrospectivas para melhoria continua."
+      },
+      "deliveries": {
+        "title": "Entregas Bi-Semanais",
+        "description": "Ciclos de entrega a cada duas semanas, garantindo que o cliente veja progresso real e possa dar feedback constantemente."
+      },
+      "tools": {
+        "title": "Ferramentas Profissionais",
+        "description": "Utilizamos Jira para gestao de tarefas e Miro para brainstorming, wireframes e planejamento visual colaborativo."
       }
     }
   },
@@ -103,7 +144,7 @@
     "description": "Usamos as melhores ferramentas do mercado para entregar solucoes de ponta"
   },
   "footer": {
-    "description": "Consultoria de tecnologia focada em desenvolvimento agil e moderno.",
+    "description": "Consultoria de tecnologia focada em desenvolvimento agil, IA generativa e agentes inteligentes.",
     "rights": "Todos os direitos reservados.",
     "madeWith": "Feito com",
     "by": "por itFolks"

@@ -4,8 +4,9 @@ import {
   HeroSection,
   ServicesSection,
   TeamSection,
-  TechStackSection,
   ProjectsSection,
+  MethodologySection,
+  TechStackSection,
   Footer,
 } from "@/components/sections";
 import { GridScan } from "@/components/react-bits/GridScan";
@@ -20,7 +21,6 @@ export default async function HomePage({
 
   return (
     <>
-      {/* Background Effect - GridScan */}
       <div className="fixed inset-0 -z-10">
         <GridScan
           sensitivity={0.55}
@@ -36,7 +36,6 @@ export default async function HomePage({
         />
       </div>
 
-      {/* Noise Overlay */}
       <div className="noise-overlay" />
 
       <main className="relative min-h-screen">
@@ -45,6 +44,7 @@ export default async function HomePage({
         <ServicesSection />
         <TeamSection />
         <ProjectsSection />
+        <MethodologySection />
         <TechStackSection />
         <Footer />
       </main>

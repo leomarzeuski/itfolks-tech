@@ -12,6 +12,9 @@ const technologies = [
   { name: "Node.js", color: "#339933" },
   { name: "Flutter", color: "#02569B" },
   { name: "React Native", color: "#61DAFB" },
+  { name: "Strapi", color: "#4945FF" },
+  { name: "n8n", color: "#EA4B71" },
+  { name: "Cal.com", color: "#292929" },
   { name: "Stripe", color: "#635BFF" },
   { name: "PostgreSQL", color: "#4169E1" },
   { name: "MongoDB", color: "#47A248" },
@@ -20,6 +23,9 @@ const technologies = [
   { name: "Tailwind", color: "#06B6D4" },
   { name: "GraphQL", color: "#E10098" },
   { name: "REST API", color: "#3B82F6" },
+  { name: "Jira", color: "#0052CC" },
+  { name: "Miro", color: "#FFD02F" },
+  { name: "OpenAI", color: "#10B981" },
 ];
 
 function TechItem({ name, color }: { name: string; color: string }) {
@@ -67,8 +73,8 @@ export function TechStackSection() {
         </div>
 
         {/* Tech Grid - Bento Style */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <div className="max-w-5xl mx-auto mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
             {technologies.map((tech) => (
               <TechItem key={tech.name} name={tech.name} color={tech.color} />
             ))}

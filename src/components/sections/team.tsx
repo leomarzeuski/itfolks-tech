@@ -1,36 +1,43 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Users, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const teamMembers = [
   {
     key: "raul",
-    initials: "R",
+    image: "/raul.png",
     color: "#3B82F6",
-    stacks: ["React", "Vue", "Flutter", "React Native"],
+    stacks: ["React", "Vue", "Flutter", "React Native", "Scrum", "IA"],
     status: "online",
   },
   {
     key: "leo",
-    initials: "L",
+    image: "/leonardo.png",
     color: "#06B6D4",
-    stacks: ["Next.js", "React", "React Native"],
+    stacks: ["Next.js", "React", "React Native", "n8n", "IA"],
     status: "online",
   },
   {
     key: "higor",
-    initials: "H",
+    image: "/higor.png",
     color: "#6366F1",
-    stacks: ["Node.js", "Strapi", "Python"],
+    stacks: ["Node.js", "Strapi", "Python", "n8n", "IA"],
     status: "online",
   },
   {
-    key: "pythonSquad",
-    initials: "+2",
+    key: "athos",
+    image: "/athos.png",
     color: "#0EA5E9",
-    stacks: ["Python", "Data", "Automation"],
-    isTeam: true,
+    stacks: ["Python", "Data", "Automacao", "IA"],
+    status: "online",
+  },
+  {
+    key: "pedro",
+    image: "/pedro.png",
+    color: "#10B981",
+    stacks: ["Python", "Automacao", "Data", "IA"],
     status: "online",
   },
 ];
@@ -57,7 +64,7 @@ export function TeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
           {teamMembers.map((member) => (
             <div
               key={member.key}
@@ -71,25 +78,25 @@ export function TeamSection() {
                 }}
               />
 
-              {/* Avatar */}
-              <div className="relative mx-auto mb-5">
+              {/* Avatar with Photo */}
+              <div className="relative mx-auto mb-5 flex justify-center">
                 <div
-                  className="relative w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-bold transition-all duration-500 group-hover:scale-105"
+                  className="relative w-20 h-20 rounded-2xl overflow-hidden transition-all duration-500 group-hover:scale-105"
                   style={{
-                    backgroundColor: `${member.color}15`,
-                    color: member.color,
                     boxShadow: `0 0 30px ${member.color}20`,
                   }}
                 >
-                  {member.isTeam ? (
-                    <Users className="h-8 w-8" />
-                  ) : (
-                    member.initials
-                  )}
+                  <Image
+                    src={member.image}
+                    alt={member.key}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
 
                   {/* Status indicator */}
                   <span
-                    className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-[3px] border-[#0a0f1e]"
+                    className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-[3px] border-[#0a0f1e] z-10"
                     style={{ backgroundColor: "#10B981" }}
                   />
                 </div>
@@ -105,12 +112,6 @@ export function TeamSection() {
               >
                 {t(`members.${member.key}.role`)}
               </p>
-
-              {member.key === "raul" && (
-                <span className="inline-block text-[10px] text-zinc-500 border border-zinc-700/50 rounded-full px-2 py-0.5 mb-2">
-                  {t(`members.${member.key}.level`)}
-                </span>
-              )}
 
               {/* Specialty */}
               <p className="text-[11px] text-zinc-500 uppercase tracking-wider mb-3">

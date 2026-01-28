@@ -1,27 +1,28 @@
 {
   "metadata": {
-    "title": "itFolks Tech | Software Development Consultancy",
-    "description": "We transform ideas into high-quality code. Specialized in web development, mobile apps, and Python backend solutions."
+    "title": "itFolks Tech | Software Development & AI Consultancy",
+    "description": "We transform ideas into high-quality code. Specialized in web development, mobile apps, Python backend solutions, generative AI and intelligent agents."
   },
   "nav": {
     "services": "Services",
     "team": "Team",
     "projects": "Projects",
+    "methodology": "Methodology",
     "techStack": "Tech Stack",
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Software Consultancy",
+    "badge": "Software & AI Consultancy",
     "title": "We Transform Ideas",
     "titleHighlight": "Into Code",
-    "description": "A technology consultancy focused on agile and modern development. We combine technical expertise with a human approach to deliver solutions that make a difference.",
+    "description": "A technology consultancy focused on agile and modern development. We combine technical expertise with generative AI and intelligent agents to deliver solutions that make a difference.",
     "cta": "Get in Touch",
     "ctaSecondary": "Our Services"
   },
   "services": {
     "sectionTag": "What We Do",
     "title": "Our Expertise",
-    "description": "We offer specialized solutions to accelerate your digital transformation",
+    "description": "We offer specialized solutions to accelerate your digital transformation with modern technologies and artificial intelligence",
     "items": {
       "web": {
         "title": "Web Development",
@@ -38,62 +39,102 @@
       "payments": {
         "title": "Payment Integrations",
         "description": "Secure implementation of Stripe and other payment gateways. Subscriptions, marketplaces, and complete checkout flows."
+      },
+      "ai": {
+        "title": "AI & Automation",
+        "description": "Generative AI solutions, intelligent agents, and workflow automation with n8n. We transform manual processes into smart, autonomous flows."
       }
     }
   },
   "team": {
     "sectionTag": "Who We Are",
     "title": "Meet Our Team",
-    "description": "Passionate professionals who turn complex challenges into elegant solutions",
+    "description": "Passionate professionals specialized in generative AI and intelligent agents, turning complex challenges into elegant solutions",
     "members": {
       "raul": {
         "name": "Raul",
-        "role": "Tech Lead",
-        "level": "Mid/Lead",
-        "specialty": "Frontend & Mobile Specialist",
-        "bio": "Leading frontend architecture and mobile development with a focus on user experience and code quality."
+        "role": "Tech Lead / Scrum Master",
+        "specialty": "Frontend, Mobile & AI",
+        "bio": "Leading frontend architecture, mobile development and AI projects. Specialist in generative AI, intelligent agents and agile management with Scrum."
       },
       "leo": {
-        "name": "Leo",
+        "name": "Leonardo",
         "role": "Frontend Developer",
-        "specialty": "Next.js & React Native Specialist",
-        "bio": "Building modern web applications and mobile experiences with Next.js, React, and React Native."
+        "specialty": "Next.js, React Native & AI",
+        "bio": "Building modern web applications and mobile experiences with Next.js, React, and React Native. Experience with n8n and generative AI."
       },
       "higor": {
         "name": "Higor",
         "role": "Backend Developer",
-        "specialty": "Node.js, Strapi & Python",
-        "bio": "Expert in building robust APIs with Node.js, Strapi CMS, and Python backend solutions."
+        "specialty": "Node.js, Strapi, n8n & AI",
+        "bio": "Expert in building robust APIs with Node.js, Strapi CMS, n8n automations, and generative AI and intelligent agents solutions."
       },
-      "pythonSquad": {
-        "name": "Python Squad",
-        "role": "+2 Developers",
-        "specialty": "Data & Automation",
-        "bio": "A dedicated team focused on data engineering, process automation, and Python-based solutions."
+      "athos": {
+        "name": "Athos",
+        "role": "Python Developer",
+        "specialty": "Python, Data & AI",
+        "bio": "Python developer focused on data engineering, process automation, and implementing generative AI solutions."
+      },
+      "pedro": {
+        "name": "Pedro",
+        "role": "Python Developer",
+        "specialty": "Python, Automation & AI",
+        "bio": "Python developer specialized in automation, data processing, and integration of intelligent agents and generative AI."
       }
     }
   },
   "projects": {
     "sectionTag": "Our Work",
-    "title": "Featured Projects",
-    "description": "A selection of our recent work showcasing our expertise",
+    "title": "Real Projects",
+    "description": "Real cases showing the client's pain point, how we solved it, and the technologies used",
     "viewProject": "View Project",
     "viewCode": "View Code",
+    "painLabel": "Client Pain Point",
+    "solutionLabel": "Our Solution",
+    "techLabel": "Technologies",
     "items": {
-      "ecommerce": {
-        "title": "E-Commerce Platform",
-        "description": "Full-stack e-commerce solution with Stripe integration, real-time inventory, and admin dashboard.",
-        "tags": ["Next.js", "Stripe", "PostgreSQL"]
+      "scheduling": {
+        "title": "Scheduling System",
+        "pain": "Client faced problems with manual scheduling: time conflicts, frequent no-shows, and wasted time with agenda management.",
+        "solution": "We developed a website and automatic scheduling system integrated with calendar, automatic notifications, and intelligent time management.",
+        "tags": ["Cal.com", "n8n", "Next.js", "Strapi", "Node.js"]
       },
-      "dashboard": {
-        "title": "Analytics Dashboard",
-        "description": "Real-time analytics platform with interactive charts, data visualization, and automated reports.",
-        "tags": ["React", "Python", "D3.js"]
+      "trmil": {
+        "title": "Trmil",
+        "pain": "Company needed a professional digital presence to attract new clients and showcase their services in a modern, trustworthy way.",
+        "solution": "We created a modern, responsive, SEO-optimized institutional website with design aligned to the brand identity.",
+        "tags": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
       },
-      "mobile": {
-        "title": "Fitness App",
-        "description": "Cross-platform mobile app with workout tracking, social features, and health integrations.",
-        "tags": ["React Native", "Node.js", "MongoDB"]
+      "prontu": {
+        "title": "Prontu / Tupuca",
+        "pain": "Need to connect sellers and buyers on an efficient digital platform with order and payment management.",
+        "solution": "We developed a complete marketplace platform with seller registration, product catalog, cart, checkout, and admin dashboard.",
+        "tags": ["React", "Node.js", "PostgreSQL", "Stripe", "REST API"]
+      },
+      "meihub": {
+        "title": "Mei Hub",
+        "pain": "Individual micro-entrepreneurs (MEI) had difficulty managing their tax obligations, finances, and documents in one place.",
+        "solution": "We created a complete mobile app for MEI management with financial control, obligation reminders, and document issuance.",
+        "tags": ["React Native", "Node.js", "Python", "MongoDB"]
+      }
+    }
+  },
+  "methodology": {
+    "sectionTag": "How We Work",
+    "title": "Our Methodology",
+    "description": "We use the best agile practices to ensure quality and predictable deliveries",
+    "items": {
+      "scrum": {
+        "title": "Scrum",
+        "description": "Well-defined sprints with planning ceremonies, daily standups, reviews, and retrospectives for continuous improvement."
+      },
+      "deliveries": {
+        "title": "Bi-Weekly Deliveries",
+        "description": "Delivery cycles every two weeks, ensuring the client sees real progress and can give constant feedback."
+      },
+      "tools": {
+        "title": "Professional Tools",
+        "description": "We use Jira for task management and Miro for brainstorming, wireframes, and collaborative visual planning."
       }
     }
   },
@@ -103,7 +144,7 @@
     "description": "We use the best tools in the market to deliver cutting-edge solutions"
   },
   "footer": {
-    "description": "Technology consultancy focused on agile and modern development.",
+    "description": "Technology consultancy focused on agile development, generative AI and intelligent agents.",
     "rights": "All rights reserved.",
     "madeWith": "Made with",
     "by": "by itFolks"

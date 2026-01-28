@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Globe, Smartphone, Server, CreditCard, ArrowUpRight } from "lucide-react";
+import { Globe, Smartphone, Server, CreditCard, Bot, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
@@ -27,6 +27,12 @@ const services = [
     icon: CreditCard,
     color: "#0EA5E9",
     number: "04",
+  },
+  {
+    key: "ai",
+    icon: Bot,
+    color: "#10B981",
+    number: "05",
   },
 ];
 
@@ -57,7 +63,9 @@ export function ServicesSection() {
             return (
               <div
                 key={service.key}
-                className="group relative glass-card rounded-2xl p-8 cursor-pointer overflow-hidden"
+                className={`group relative glass-card rounded-2xl p-8 cursor-pointer overflow-hidden ${
+                  service.key === "ai" ? "md:col-span-2" : ""
+                }`}
               >
                 {/* Corner decorations */}
                 <div className="corner-decoration top-left" style={{ borderColor: `${service.color}30` }} />
