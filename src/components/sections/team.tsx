@@ -33,13 +33,13 @@ const teamMembers = [
     stacks: ["Python", "Data", "Automacao", "IA"],
     status: "online",
   },
-  {
-    key: "pedro",
-    image: "/pedro.png",
-    color: "#10B981",
-    stacks: ["Python", "Automacao", "Data", "IA"],
-    status: "online",
-  },
+  // {
+  //   key: "pedro",
+  //   image: "/pedro.png",
+  //   color: "#10B981",
+  //   stacks: ["Python", "Automacao", "Data", "IA"],
+  //   status: "online",
+  // },
 ];
 
 export function TeamSection() {
@@ -64,7 +64,7 @@ export function TeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {teamMembers.map((member) => (
             <div
               key={member.key}

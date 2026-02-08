@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const navItems = [
   { key: "services", href: "#services" },
@@ -54,12 +55,12 @@ export function Header() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] group-hover:neon-glow transition-all duration-300">
-              <Zap className="h-5 w-5 text-white" strokeWidth={2.5} />
+            <div className="relative w-10 h-10 rounded-lg overflow-hidden group-hover:neon-glow transition-all duration-300">
+              <Image src="/logoLight.jpeg" alt="automatechglobal" fill className="object-cover" sizes="40px" />
             </div>
             <span className="text-xl font-bold tracking-tight">
-              <span className="text-white">it</span>
-              <span className="gradient-text-blue">Folks</span>
+              <span className="text-white">Automa</span>
+              <span className="gradient-text-blue">TechGlobal</span>
             </span>
           </a>
 

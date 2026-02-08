@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Zap, Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const socialLinks = [
-  { name: "GitHub", icon: Github, href: "https://github.com/itfolks" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/itfolks" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/itfolks" },
+  { name: "GitHub", icon: Github, href: "https://github.com/automatechglobal" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/automatechglobal" },
+  { name: "Twitter", icon: Twitter, href: "https://twitter.com/automatechglobal" },
 ];
 
 const quickLinks = [
@@ -41,12 +42,12 @@ export function Footer() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8]">
-                <Zap className="h-5 w-5 text-white" strokeWidth={2.5} />
+              <div className="relative w-10 h-10 rounded-lg overflow-hidden">
+                <Image src="/logoLight.jpeg" alt="automatechglobal" fill className="object-cover" sizes="40px" />
               </div>
               <span className="text-xl font-bold">
-                <span className="text-white">it</span>
-                <span className="gradient-text-blue">Folks</span>
+                <span className="text-white">Automa</span>
+                <span className="gradient-text-blue">TechGlobal</span>
               </span>
             </a>
 
@@ -104,7 +105,7 @@ export function Footer() {
               Get in Touch
             </h4>
             <a
-              href="mailto:hello@itfolks.tech"
+              href="mailto:hello@automatechglobal.tech"
               className="group flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all mb-3"
             >
               <div className="w-10 h-10 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center">
@@ -113,7 +114,7 @@ export function Footer() {
               <div>
                 <p className="text-xs text-zinc-500 mb-0.5">Email us</p>
                 <p className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
-                  hello@itfolks.tech
+                  hello@automatechglobal.tech
                 </p>
               </div>
             </a>
@@ -123,7 +124,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-600">
-            &copy; {currentYear} itFolks Tech. {t("rights")}
+            &copy; {currentYear} automatechglobal Tech. {t("rights")}
           </p>
           <p className="text-xs text-zinc-600 flex items-center gap-1.5">
             {t("madeWith")}

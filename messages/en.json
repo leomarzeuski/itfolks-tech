@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "itFolks Tech | Software Development & AI Consultancy",
+    "title": "automatechglobal Tech | Software Development & AI Consultancy",
     "description": "We transform ideas into high-quality code. Specialized in web development, mobile apps, Python backend solutions, generative AI and intelligent agents."
   },
   "nav": {
@@ -97,25 +97,47 @@
         "title": "Scheduling System",
         "pain": "Client faced problems with manual scheduling: time conflicts, frequent no-shows, and wasted time with agenda management.",
         "solution": "We developed a website and automatic scheduling system integrated with calendar, automatic notifications, and intelligent time management.",
-        "tags": ["Cal.com", "n8n", "Next.js", "Strapi", "Node.js"]
+        "tags": [
+          "Cal.com",
+          "n8n",
+          "Next.js",
+          "Strapi",
+          "Node.js"
+        ]
       },
       "trmil": {
         "title": "Trmil",
         "pain": "Company needed a professional digital presence to attract new clients and showcase their services in a modern, trustworthy way.",
         "solution": "We created a modern, responsive, SEO-optimized institutional website with design aligned to the brand identity.",
-        "tags": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+        "tags": [
+          "Next.js",
+          "React",
+          "Tailwind CSS",
+          "TypeScript"
+        ]
       },
       "prontu": {
         "title": "Prontu / Tupuca",
         "pain": "Need to connect sellers and buyers on an efficient digital platform with order and payment management.",
         "solution": "We developed a complete marketplace platform with seller registration, product catalog, cart, checkout, and admin dashboard.",
-        "tags": ["React", "Node.js", "PostgreSQL", "Stripe", "REST API"]
+        "tags": [
+          "React",
+          "Node.js",
+          "PostgreSQL",
+          "Stripe",
+          "REST API"
+        ]
       },
       "meihub": {
         "title": "Mei Hub",
         "pain": "Individual micro-entrepreneurs (MEI) had difficulty managing their tax obligations, finances, and documents in one place.",
         "solution": "We created a complete mobile app for MEI management with financial control, obligation reminders, and document issuance.",
-        "tags": ["React Native", "Node.js", "Python", "MongoDB"]
+        "tags": [
+          "React Native",
+          "Node.js",
+          "Python",
+          "MongoDB"
+        ]
       }
     }
   },
@@ -147,6 +169,6 @@
     "description": "Technology consultancy focused on agile development, generative AI and intelligent agents.",
     "rights": "All rights reserved.",
     "madeWith": "Made with",
-    "by": "by itFolks"
+    "by": "by automatechglobal"
   }
 }

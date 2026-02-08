@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "itFolks Tech | Consultoria de Desenvolvimento de Software & IA",
+    "title": "automatechglobal Tech | Consultoria de Desenvolvimento de Software & IA",
     "description": "Transformamos ideias em codigo de alta qualidade. Especializados em desenvolvimento web, apps mobile, solucoes backend Python, IA generativa e agentes inteligentes."
   },
   "nav": {
@@ -97,25 +97,47 @@
         "title": "Sistema de Agendamento",
         "pain": "Cliente enfrentava problemas com agendamentos manuais: conflitos de horarios, no-shows frequentes e perda de tempo com gestao de agenda.",
         "solution": "Desenvolvemos um site e sistema de agendamento automatico integrado com calendario, notificacoes automaticas e gestao inteligente de horarios.",
-        "tags": ["Cal.com", "n8n", "Next.js", "Strapi", "Node.js"]
+        "tags": [
+          "Cal.com",
+          "n8n",
+          "Next.js",
+          "Strapi",
+          "Node.js"
+        ]
       },
       "trmil": {
         "title": "Trmil",
         "pain": "Empresa precisava de presenca digital profissional para atrair novos clientes e apresentar seus servicos de forma moderna e confiavel.",
         "solution": "Criamos um site institucional moderno, responsivo e otimizado para SEO, com design alinhado a identidade da marca.",
-        "tags": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+        "tags": [
+          "Next.js",
+          "React",
+          "Tailwind CSS",
+          "TypeScript"
+        ]
       },
       "prontu": {
         "title": "Prontu / Tupuca",
         "pain": "Necessidade de conectar vendedores e compradores em uma plataforma digital eficiente, com gestao de pedidos e pagamentos.",
         "solution": "Desenvolvemos uma plataforma marketplace completa com cadastro de vendedores, catalogo de produtos, carrinho, checkout e painel administrativo.",
-        "tags": ["React", "Node.js", "PostgreSQL", "Stripe", "REST API"]
+        "tags": [
+          "React",
+          "Node.js",
+          "PostgreSQL",
+          "Stripe",
+          "REST API"
+        ]
       },
       "meihub": {
         "title": "Mei Hub",
         "pain": "Microempreendedores individuais (MEI) tinham dificuldade em gerenciar suas obrigacoes fiscais, financas e documentos em um so lugar.",
         "solution": "Criamos um app mobile completo para gestao do MEI com controle financeiro, lembretes de obrigacoes e emissao de documentos.",
-        "tags": ["React Native", "Node.js", "Python", "MongoDB"]
+        "tags": [
+          "React Native",
+          "Node.js",
+          "Python",
+          "MongoDB"
+        ]
       }
     }
   },
@@ -147,6 +169,6 @@
     "description": "Consultoria de tecnologia focada em desenvolvimento agil, IA generativa e agentes inteligentes.",
     "rights": "Todos os direitos reservados.",
     "madeWith": "Feito com",
-    "by": "por itFolks"
+    "by": "por automatechglobal"
   }
 }
