@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
-import { Sparkles } from "lucide-react";
+import { Sparkles, X, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 const teamMembers = [
@@ -33,17 +35,151 @@ const teamMembers = [
     stacks: ["Python", "Data", "Automacao", "IA"],
     status: "online",
   },
-  // {
-  //   key: "pedro",
-  //   image: "/pedro.png",
-  //   color: "#10B981",
-  //   stacks: ["Python", "Automacao", "Data", "IA"],
-  //   status: "online",
-  // },
 ];
+
+function TeamModal({
+  member,
+  t,
+  onClose,
+}: {
+  member: (typeof teamMembers)[0];
+  t: ReturnType<typeof useTranslations>;
+  onClose: () => void;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEsc);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [onClose]);
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <div 
+      className="modal-backdrop" 
+      onClick={onClose}
+      style={{ zIndex: 10001 }}
+    >
+      <div
+        className="modal-content"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Top accent line */}
+        <div
+          className="absolute top-0 left-0 right-0 h-[2px] rounded-t-3xl"
+          style={{
+            background: `linear-gradient(90deg, ${member.color}, ${member.color}80, transparent)`,
+          }}
+        />
+
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all"
+        >
+          <X className="h-4 w-4" />
+        </button>
+
+        {/* Content */}
+        <div className="p-8 pt-10">
+          {/* Avatar */}
+          <div className="flex items-start gap-6 mb-8">
+            <div
+              className="relative w-24 h-24 rounded-2xl overflow-hidden shrink-0"
+              style={{
+                boxShadow: `0 0 40px ${member.color}30`,
+              }}
+            >
+              <Image
+                src={member.image}
+                alt={t(`members.${member.key}.name`)}
+                fill
+                className="object-cover"
+                sizes="96px"
+              />
+              {/* Status dot */}
+              <span
+                className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-[3px] border-[#0a0f1e] z-10"
+                style={{ backgroundColor: "#10B981" }}
+              />
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-1">
+                {t(`members.${member.key}.name`)}
+              </h3>
+              <p
+                className="text-sm font-semibold mb-1"
+                style={{ color: member.color }}
+              >
+                {t(`members.${member.key}.role`)}
+              </p>
+              <p className="text-xs text-zinc-500 uppercase tracking-wider">
+                {t(`members.${member.key}.specialty`)}
+              </p>
+            </div>
+          </div>
+
+          {/* Bio */}
+          <div className="mb-6">
+            <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">
+              Bio
+            </h4>
+            <p className="text-sm text-zinc-300 leading-relaxed">
+              {t(`members.${member.key}.bio`)}
+            </p>
+          </div>
+
+          {/* Tech Stack */}
+          <div>
+            <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">
+              Tech Stack
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {member.stacks.map((stack) => (
+                <span
+                  key={stack}
+                  className="text-xs px-3 py-1.5 rounded-lg transition-all hover:scale-105"
+                  style={{
+                    backgroundColor: `${member.color}15`,
+                    color: member.color,
+                    border: `1px solid ${member.color}30`,
+                  }}
+                >
+                  {stack}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom glow */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-20 rounded-b-3xl pointer-events-none"
+          style={{
+            background: `radial-gradient(ellipse 80% 100% at 50% 100%, ${member.color}08, transparent)`,
+          }}
+        />
+      </div>
+    </div>,
+    document.body
+  );
+}
 
 export function TeamSection() {
   const t = useTranslations("team");
+  const [selectedMember, setSelectedMember] = useState<
+    (typeof teamMembers)[0] | null
+  >(null);
 
   return (
     <section id="team" className="relative py-32 section-gradient">
@@ -68,7 +204,8 @@ export function TeamSection() {
           {teamMembers.map((member) => (
             <div
               key={member.key}
-              className="group relative glass-card rounded-2xl p-6 text-center overflow-hidden"
+              onClick={() => setSelectedMember(member)}
+              className="group relative glass-card interactive-card rounded-2xl p-6 text-center overflow-hidden"
             >
               {/* Animated border glow on hover */}
               <div
@@ -81,7 +218,7 @@ export function TeamSection() {
               {/* Avatar with Photo */}
               <div className="relative mx-auto mb-5 flex justify-center">
                 <div
-                  className="relative w-20 h-20 rounded-2xl overflow-hidden transition-all duration-500 group-hover:scale-105"
+                  className="relative w-20 h-20 rounded-2xl overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:rounded-xl"
                   style={{
                     boxShadow: `0 0 30px ${member.color}20`,
                   }}
@@ -139,10 +276,25 @@ export function TeamSection() {
                   </span>
                 ))}
               </div>
+
+              {/* Click hint */}
+              <div className="click-hint mt-4 flex items-center justify-center gap-1.5 text-xs" style={{ color: member.color }}>
+                <ExternalLink className="h-3 w-3" />
+                <span className="font-medium">Ver mais</span>
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedMember && (
+        <TeamModal
+          member={selectedMember}
+          t={t}
+          onClose={() => setSelectedMember(null)}
+        />
+      )}
     </section>
   );
 }
