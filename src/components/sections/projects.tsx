@@ -14,29 +14,24 @@ import {
 } from "lucide-react";
 
 const projects = [
-  {
-    key: "scheduling",
-    color: "#3B82F6",
-    accentColor: "#06B6D4",
-    videoUrl: "",
-  },
+
   {
     key: "trmil",
     color: "#06B6D4",
     accentColor: "#3B82F6",
-    videoUrl: "",
+    videoUrl: "/videos/trmil.mp4",
   },
   {
     key: "prontu",
     color: "#6366F1",
     accentColor: "#0EA5E9",
-    videoUrl: "",
+    videoUrl: "./videos/bnpl.mp4",
   },
   {
     key: "meihub",
     color: "#0EA5E9",
     accentColor: "#6366F1",
-    videoUrl: "",
+    videoUrl: "/videos/hubmei.mp4",
   },
 ];
 
@@ -49,10 +44,7 @@ function ProjectModal({
   t: ReturnType<typeof useTranslations>;
   onClose: () => void;
 }) {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -63,8 +55,6 @@ function ProjectModal({
       window.removeEventListener("keydown", handleEsc);
     };
   }, [onClose]);
-
-  if (!mounted) return null;
 
   // Safe data retrieval
   let tags: string[] = [];
@@ -119,14 +109,29 @@ function ProjectModal({
             {t(`items.${project.key}.title`)}
           </h3>
 
-          {/* Video Placeholder */}
+          {/* Video Player */}
           {project.videoUrl ? (
-            <div className="mb-8 rounded-xl overflow-hidden aspect-video">
-              <iframe
+            <div 
+              className="mb-8 rounded-xl overflow-hidden aspect-video group/video relative"
+              style={{
+                boxShadow: `0 0 30px ${project.color}15, inset 0 0 30px ${project.color}05`,
+                border: `1px solid ${project.color}25`,
+              }}
+            >
+              <video
                 src={project.videoUrl}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                className="w-full h-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                poster={`${project.videoUrl}#t=0.1`}
+              />
+              {/* Video glow overlay */}
+              <div 
+                className="absolute inset-0 pointer-events-none rounded-xl opacity-0 group-hover/video:opacity-100 transition-opacity duration-300"
+                style={{
+                  boxShadow: `inset 0 0 40px ${project.color}10`,
+                }}
               />
             </div>
           ) : (
@@ -260,11 +265,15 @@ export function ProjectsSection() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.key}
               onClick={() => setSelectedProject(project)}
-              className="group relative glass-card interactive-card rounded-2xl overflow-hidden"
+              className={`group relative glass-card interactive-card rounded-2xl overflow-hidden ${
+                projects.length % 2 !== 0 && index === projects.length - 1 
+                  ? "lg:col-span-2 lg:max-w-2xl lg:mx-auto lg:w-full" 
+                  : ""
+              }`}
             >
               {/* Top accent line */}
               <div
@@ -277,11 +286,54 @@ export function ProjectsSection() {
               <div className="p-8">
                 {/* Project Title */}
                 <h3
-                  className="text-2xl font-bold mb-6 transition-colors"
+                  className="text-2xl font-bold mb-4 transition-colors"
                   style={{ color: project.color }}
                 >
                   {t(`items.${project.key}.title`)}
                 </h3>
+
+                {/* Video Preview */}
+                {project.videoUrl && (
+                  <div 
+                    className="mb-6 rounded-xl overflow-hidden aspect-video relative group/video"
+                    style={{
+                      boxShadow: `0 0 20px ${project.color}10`,
+                      border: `1px solid ${project.color}20`,
+                    }}
+                  >
+                    <video
+                      src={project.videoUrl}
+                      className="w-full h-full object-cover"
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      onMouseEnter={(e) => e.currentTarget.play()}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.pause();
+                        e.currentTarget.currentTime = 0;
+                      }}
+                    />
+                    {/* Play overlay */}
+                    <div 
+                      className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-100 group-hover/video:opacity-0 transition-opacity duration-300"
+                    >
+                      <div
+                        className="w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm"
+                        style={{ backgroundColor: `${project.color}30`, border: `1px solid ${project.color}50` }}
+                      >
+                        <Play className="h-6 w-6 ml-0.5" style={{ color: project.color }} />
+                      </div>
+                    </div>
+                    {/* Glow effect on hover */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        boxShadow: `inset 0 0 30px ${project.color}15`,
+                      }}
+                    />
+                  </div>
+                )}
 
                 {/* Pain Point */}
                 <div className="mb-5">
@@ -377,10 +429,10 @@ export function ProjectsSection() {
 }
 
 // Helper to safely get tags outside of modal too
-function safeGetTags(t: any, key: string): string[] {
+function safeGetTags(t: ReturnType<typeof useTranslations>, key: string): string[] {
   try {
     const raw = t.raw(`items.${key}.tags`);
-    return Array.isArray(raw) ? raw : [];
+    return Array.isArray(raw) ? (raw as string[]) : [];
   } catch {
     return [];
   }
