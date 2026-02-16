@@ -29,7 +29,7 @@ export function LanguageSwitcher() {
             "relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300",
             locale === loc.code
               ? "bg-gradient-to-r from-[#3B82F6] to-[#1D4ED8] text-white"
-              : "text-zinc-500 hover:text-white"
+              : "text-zinc-500 hover:text-white",
           )}
         >
           <ReactCountryFlag
