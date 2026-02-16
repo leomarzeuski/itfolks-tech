@@ -112,9 +112,9 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-[#3B82F6]" />
               </div>
               <div>
-                <p className="text-xs text-zinc-500 mb-0.5">Email us</p>
+                <p className="text-xs text-zinc-500 mb-0.5">Book a call with us</p>
                 <p className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
-                  hello@automatechglobal.tech
+                  https://cal.com/raul-balestra-kovpgt/raulbalestra
                 </p>
               </div>
             </a>
