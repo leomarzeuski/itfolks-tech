@@ -138,6 +138,17 @@
           "Python",
           "MongoDB"
         ]
+      },
+      "topdevjobs": {
+        "title": "Top Dev Jobs",
+        "pain": "Desenvolvedores enfrentavam dificuldade em encontrar vagas de emprego relevantes e empresas tinham problemas para alcançar talentos qualificados na área de tecnologia.",
+        "solution": "Desenvolvemos uma plataforma de empregos especializada para desenvolvedores, com filtros avançados, alertas personalizados e matching inteligente entre candidatos e vagas.",
+        "tags": [
+          "React Native",
+          "Node.js",
+          "PostgreSQL",
+          "TypeScript"
+        ]
       }
     }
   },

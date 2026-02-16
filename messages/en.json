@@ -138,6 +138,17 @@
           "Python",
           "MongoDB"
         ]
+      },
+      "topdevjobs": {
+        "title": "Top Dev Jobs",
+        "pain": "Developers struggled to find relevant job openings and companies had difficulty reaching qualified tech talent.",
+        "solution": "We developed a specialized job platform for developers with advanced filters, personalized alerts, and intelligent matching between candidates and positions.",
+        "tags": [
+          "React Native",
+          "Node.js",
+          "PostgreSQL",
+          "TypeScript"
+        ]
       }
     }
   },

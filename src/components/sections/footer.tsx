@@ -104,20 +104,29 @@ export function Footer() {
             <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
               Get in Touch
             </h4>
-            <a
-              href="mailto:hello@automatechglobal.tech"
-              className="group flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all mb-3"
+            <div
+              className="group flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all mb-3 cursor-pointer"
+              role="button"
+              onClick={() => {
+                window.location.href = "mailto:hello@automatechglobal.tech";
+              }}
             >
               <div className="w-10 h-10 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center">
                 <Mail className="h-4 w-4 text-[#3B82F6]" />
               </div>
               <div>
                 <p className="text-xs text-zinc-500 mb-0.5">Book a call with us</p>
-                <p className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
+                <a
+                  href="https://cal.com/raul-balestra-kovpgt/raulbalestra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white group-hover:text-[#3B82F6] transition-colors underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   https://cal.com/raul-balestra-kovpgt/raulbalestra
-                </p>
+                </a>
               </div>
-            </a>
+            </div>
           </div>
         </div>
 

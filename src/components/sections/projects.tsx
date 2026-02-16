@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 
 const projects = [
-
   {
     key: "trmil",
     color: "#06B6D4",
@@ -25,13 +24,19 @@ const projects = [
     key: "prontu",
     color: "#6366F1",
     accentColor: "#0EA5E9",
-    videoUrl: "./videos/bnpl.mp4",
+    videoUrl: "/videos/bnpl.mp4",
   },
   {
     key: "meihub",
     color: "#0EA5E9",
     accentColor: "#6366F1",
     videoUrl: "/videos/hubmei.mp4",
+  },
+  {
+    key: "topdevjobs",
+    color: "#10B981",
+    accentColor: "#059669",
+    videoUrl: "/videos/topdevjobs.mp4",
   },
 ];
 
@@ -112,7 +117,7 @@ function ProjectModal({
           {/* Video Player */}
           {project.videoUrl ? (
             <div 
-              className="mb-8 rounded-xl overflow-hidden aspect-video group/video relative"
+              className="mb-8 rounded-xl overflow-hidden group/video relative flex justify-center"
               style={{
                 boxShadow: `0 0 30px ${project.color}15, inset 0 0 30px ${project.color}05`,
                 border: `1px solid ${project.color}25`,
@@ -120,7 +125,7 @@ function ProjectModal({
             >
               <video
                 src={project.videoUrl}
-                className="w-full h-full object-cover"
+                className="max-h-[60vh] w-auto object-contain"
                 controls
                 playsInline
                 preload="metadata"
@@ -295,7 +300,7 @@ export function ProjectsSection() {
                 {/* Video Preview */}
                 {project.videoUrl && (
                   <div 
-                    className="mb-6 rounded-xl overflow-hidden aspect-video relative group/video"
+                    className="mb-6 rounded-xl overflow-hidden h-48 relative group/video flex justify-center bg-black/20"
                     style={{
                       boxShadow: `0 0 20px ${project.color}10`,
                       border: `1px solid ${project.color}20`,
@@ -303,7 +308,7 @@ export function ProjectsSection() {
                   >
                     <video
                       src={project.videoUrl}
-                      className="w-full h-full object-cover"
+                      className="h-full w-auto object-contain"
                       muted
                       loop
                       playsInline
