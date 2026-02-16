@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { getCalApi } from "@calcom/embed-react";
 
 const navItems = [
   { key: "services", href: "#services" },
@@ -27,6 +28,20 @@ export function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: "dark",
+        cssVarsPerTheme: {
+          dark: { "cal-brand": "#3B82F6" },
+          light: { "cal-brand": "#3B82F6" },
+        },
+        hideEventTypeDetails: false,
+      });
+    })();
   }, []);
 
   const scrollToSection = (href: string) => {
@@ -81,13 +96,16 @@ export function Header() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher />
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              size="sm"
-              className="btn-neon rounded-full px-6"
-            >
-              <span>{t("contact")}</span>
-            </Button>
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] rounded-full opacity-60 blur-md group-hover:opacity-100 animate-pulse transition-opacity" />
+              <Button
+                data-cal-link="raul-balestra-kovpgt/raulbalestra"
+                size="sm"
+                className="relative btn-neon rounded-full px-6"
+              >
+                <span>{t("contact")}</span>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -124,7 +142,7 @@ export function Header() {
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("#contact")}
+              data-cal-link="raul-balestra-kovpgt/raulbalestra"
               className="btn-neon mt-2 rounded-full"
             >
               <span>{t("contact")}</span>

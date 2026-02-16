@@ -179,6 +179,8 @@
   "footer": {
     "description": "Technology consultancy focused on agile development, generative AI and intelligent agents.",
     "rights": "All rights reserved.",
+    "bookCall": "Book a call with us",
+    "scheduleNow": "Schedule now",
     "madeWith": "Made with",
     "by": "by automatechglobal"
   }

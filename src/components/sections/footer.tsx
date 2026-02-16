@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Calendar, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { getCalApi } from "@calcom/embed-react";
 
 const socialLinks = [
   { name: "GitHub", icon: Github, href: "https://github.com/automatechglobal" },
@@ -19,6 +21,20 @@ const quickLinks = [
 export function Footer() {
   const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: "dark",
+        cssVarsPerTheme: {
+          dark: { "cal-brand": "#3B82F6" },
+          light: { "cal-brand": "#3B82F6" },
+        },
+        hideEventTypeDetails: false,
+      });
+    })();
+  }, []);
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -104,27 +120,36 @@ export function Footer() {
             <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
               Get in Touch
             </h4>
+            <button
+              data-cal-link="raul-balestra-kovpgt/raulbalestra"
+              className="group w-full flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all mb-3 cursor-pointer text-left"
+            >
+              <div className="w-10 h-10 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center shrink-0">
+                <Calendar className="h-4 w-4 text-[#3B82F6]" />
+              </div>
+              <div>
+                <p className="text-xs text-zinc-500 mb-0.5">{t("bookCall")}</p>
+                <span className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
+                  {t("scheduleNow")}
+                </span>
+              </div>
+            </button>
+
             <div
-              className="group flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all mb-3 cursor-pointer"
+              className="group flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all cursor-pointer"
               role="button"
               onClick={() => {
                 window.location.href = "mailto:hello@automatechglobal.tech";
               }}
             >
-              <div className="w-10 h-10 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center shrink-0">
                 <Mail className="h-4 w-4 text-[#3B82F6]" />
               </div>
               <div>
-                <p className="text-xs text-zinc-500 mb-0.5">Book a call with us</p>
-                <a
-                  href="https://cal.com/raul-balestra-kovpgt/raulbalestra"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-white group-hover:text-[#3B82F6] transition-colors underline"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  https://cal.com/raul-balestra-kovpgt/raulbalestra
-                </a>
+                <p className="text-xs text-zinc-500 mb-0.5">Email</p>
+                <span className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
+                  hello@automatechglobal.tech
+                </span>
               </div>
             </div>
           </div>

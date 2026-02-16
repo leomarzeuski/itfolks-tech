@@ -179,6 +179,8 @@
   "footer": {
     "description": "Consultoria de tecnologia focada em desenvolvimento agil, IA generativa e agentes inteligentes.",
     "rights": "Todos os direitos reservados.",
+    "bookCall": "Agende uma chamada conosco",
+    "scheduleNow": "Agendar agora",
     "madeWith": "Feito com",
     "by": "por automatechglobal"
   }
