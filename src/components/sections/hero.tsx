@@ -1,11 +1,27 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowRight, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getCalApi } from "@calcom/embed-react";
 
 export function HeroSection() {
   const t = useTranslations("hero");
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: "dark",
+        cssVarsPerTheme: {
+          dark: { "cal-brand": "#3B82F6" },
+          light: { "cal-brand": "#3B82F6" },
+        },
+        hideEventTypeDetails: false,
+      });
+    })();
+  }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -49,7 +65,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              onClick={() => scrollToSection("#contact")}
+              data-cal-link="raul-balestra-kovpgt/raulbalestra"
               className="btn-neon rounded-full text-base px-8 py-6 gap-2 group"
             >
               <span className="flex items-center gap-2">
