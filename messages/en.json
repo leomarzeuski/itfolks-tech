@@ -94,15 +94,15 @@
     "techLabel": "Technologies",
     "items": {
       "scheduling": {
-        "title": "Scheduling System",
-        "pain": "Client faced problems with manual scheduling: time conflicts, frequent no-shows, and wasted time with agenda management.",
-        "solution": "We developed a website and automatic scheduling system integrated with calendar, automatic notifications, and intelligent time management.",
+        "title": "The Apex Barber",
+        "pain": "The barbershop struggled with manual scheduling: clients waiting in line with no way to book in advance, frequent no-shows, inability to choose a preferred barber, and wasted time managing walk-in queues.",
+        "solution": "We built a complete barbershop website with online booking, a full-service catalog with pricing, barber selection, a gallery showcasing the craft, and client reviews — all optimized for mobile and deployed on Vercel.",
         "tags": [
-          "Cal.com",
-          "n8n",
           "Next.js",
-          "Strapi",
-          "Node.js"
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vercel"
         ]
       },
       "trmil": {
@@ -148,6 +148,18 @@
           "Node.js",
           "PostgreSQL",
           "TypeScript"
+        ]
+      },
+      "mrjay": {
+        "title": "Mr. Jay",
+        "pain": "Millions of Brazilians want to speak English but face expensive courses (R$200–500/month), fear of making mistakes, rigid class schedules, and apps that only teach vocabulary without any real conversation practice.",
+        "solution": "We built an AI-powered conversational English teacher available 24/7 in the browser. Mr. Jay adapts to each student's level, switches naturally between Portuguese and English, and creates a judgment-free space for daily speaking practice — with a free plan to lower the barrier to entry.",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "OpenAI",
+          "Node.js",
+          "Stripe"
         ]
       }
     }

@@ -15,6 +15,12 @@ import {
 
 const projects = [
   {
+    key: "scheduling",
+    color: "#A855F7",
+    accentColor: "#7C3AED",
+    videoUrl: "/videos/barbearia.mp4",
+  },
+  {
     key: "trmil",
     color: "#06B6D4",
     accentColor: "#3B82F6",
@@ -37,6 +43,12 @@ const projects = [
     color: "#10B981",
     accentColor: "#059669",
     videoUrl: "/videos/topdevjobs.mp4",
+  },
+  {
+    key: "mrjay",
+    color: "#F59E0B",
+    accentColor: "#EF4444",
+    videoUrl: "/videos/mrjay.mp4",
   },
 ];
 

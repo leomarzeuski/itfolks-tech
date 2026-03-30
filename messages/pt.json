@@ -94,15 +94,15 @@
     "techLabel": "Tecnologias",
     "items": {
       "scheduling": {
-        "title": "Sistema de Agendamento",
-        "pain": "Cliente enfrentava problemas com agendamentos manuais: conflitos de horarios, no-shows frequentes e perda de tempo com gestao de agenda.",
-        "solution": "Desenvolvemos um site e sistema de agendamento automatico integrado com calendario, notificacoes automaticas e gestao inteligente de horarios.",
+        "title": "The Apex Barber",
+        "pain": "A barbearia sofria com agendamentos manuais: clientes na fila sem possibilidade de reservar com antecedencia, no-shows frequentes, impossibilidade de escolher o barbeiro preferido e tempo desperdicado gerenciando walk-ins.",
+        "solution": "Desenvolvemos um site completo para a barbearia com agendamento online, catalogo de servicos com precos, selecao de barbeiro, galeria de trabalhos e avaliacoes de clientes — tudo otimizado para mobile e publicado na Vercel.",
         "tags": [
-          "Cal.com",
-          "n8n",
           "Next.js",
-          "Strapi",
-          "Node.js"
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vercel"
         ]
       },
       "trmil": {
@@ -148,6 +148,18 @@
           "Node.js",
           "PostgreSQL",
           "TypeScript"
+        ]
+      },
+      "mrjay": {
+        "title": "Mr. Jay",
+        "pain": "Milhoes de brasileiros querem falar ingles mas enfrentam cursos caros (R$200–500/mes), vergonha de errar, horarios rigidos e apps que so ensinam vocabulario sem nenhuma pratica real de conversacao.",
+        "solution": "Desenvolvemos um professor de ingles com IA disponivel 24h no navegador. O Mr. Jay se adapta ao nivel de cada aluno, alterna naturalmente entre portugues e ingles e cria um ambiente sem julgamento para praticar conversacao todo dia — com plano gratuito para reduzir a barreira de entrada.",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "OpenAI",
+          "Node.js",
+          "Stripe"
         ]
       }
     }
