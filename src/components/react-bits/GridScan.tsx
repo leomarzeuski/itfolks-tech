@@ -3,7 +3,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberrationEffect } from 'postprocessing';
 import * as THREE from 'three';
-import * as faceapi from 'face-api.js';
+
+type FaceApiModule = typeof import('face-api.js');
 
 type GridScanProps = {
   enableWebcam?: boolean;
@@ -343,6 +344,7 @@ export const GridScan: React.FC<GridScanProps> = ({
   const composerRef = useRef<EffectComposer | null>(null);
   const bloomRef = useRef<BloomEffect | null>(null);
   const chromaRef = useRef<ChromaticAberrationEffect | null>(null);
+  const faceApiRef = useRef<FaceApiModule | null>(null);
   const rafRef = useRef<number | null>(null);
 
   const [modelsReady, setModelsReady] = useState(false);
@@ -681,9 +683,17 @@ export const GridScan: React.FC<GridScanProps> = ({
   }, [enableGyro, uiFaceActive]);
 
   useEffect(() => {
+    if (!enableWebcam) {
+      setModelsReady(false);
+      faceApiRef.current = null;
+      return;
+    }
+
     let canceled = false;
     const load = async () => {
       try {
+        const faceapi = await import('face-api.js');
+        faceApiRef.current = faceapi;
         await Promise.all([
           faceapi.nets.tinyFaceDetector.loadFromUri(modelsPath),
           faceapi.nets.faceLandmark68TinyNet.loadFromUri(modelsPath)
@@ -697,7 +707,7 @@ export const GridScan: React.FC<GridScanProps> = ({
     return () => {
       canceled = true;
     };
-  }, [modelsPath]);
+  }, [enableWebcam, modelsPath]);
 
   useEffect(() => {
     let stop = false;
@@ -705,6 +715,8 @@ export const GridScan: React.FC<GridScanProps> = ({
 
     const start = async () => {
       if (!enableWebcam || !modelsReady) return;
+      const faceapi = faceApiRef.current;
+      if (!faceapi) return;
       const video = videoRef.current;
       if (!video) return;
 

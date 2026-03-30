@@ -19,36 +19,48 @@ const projects = [
     color: "#A855F7",
     accentColor: "#7C3AED",
     videoUrl: "/videos/barbearia.mp4",
+    mobileVideoUrl: "/videos/barbearia.mobile.mp4",
+    posterUrl: "/videos/posters/barbearia.jpg",
   },
   {
     key: "trmil",
     color: "#06B6D4",
     accentColor: "#3B82F6",
     videoUrl: "/videos/trmil.mp4",
+    mobileVideoUrl: "/videos/trmil.mobile.mp4",
+    posterUrl: "/videos/posters/trmil.jpg",
   },
   {
     key: "prontu",
     color: "#6366F1",
     accentColor: "#0EA5E9",
     videoUrl: "/videos/bnpl.mp4",
+    mobileVideoUrl: "/videos/bnpl.mobile.mp4",
+    posterUrl: "/videos/posters/bnpl.jpg",
   },
   {
     key: "meihub",
     color: "#0EA5E9",
     accentColor: "#6366F1",
     videoUrl: "/videos/hubmei.mp4",
+    mobileVideoUrl: "/videos/hubmei.mobile.mp4",
+    posterUrl: "/videos/posters/hubmei.jpg",
   },
   {
     key: "topdevjobs",
     color: "#10B981",
     accentColor: "#059669",
     videoUrl: "/videos/topdevjobs.mp4",
+    mobileVideoUrl: "/videos/topdevjobs.mobile.mp4",
+    posterUrl: "/videos/posters/topdevjobs.jpg",
   },
   {
     key: "mrjay",
     color: "#F59E0B",
     accentColor: "#EF4444",
     videoUrl: "/videos/mrjay.mp4",
+    mobileVideoUrl: "/videos/mrjay.mobile.mp4",
+    posterUrl: "/videos/posters/mrjay.jpg",
   },
 ];
 
@@ -92,15 +104,12 @@ function ProjectModal({
   if (typeof document === "undefined") return null;
 
   return createPortal(
-    <div 
-      className="modal-backdrop" 
+    <div
+      className="modal-backdrop"
       onClick={onClose}
       style={{ zIndex: 10001 }} // Inline safety override
     >
-      <div
-        className="modal-content"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         {/* Top accent line */}
         <div
           className="absolute top-0 left-0 right-0 h-[2px] rounded-t-3xl"
@@ -136,13 +145,15 @@ function ProjectModal({
               }}
             >
               <video
-                src={project.videoUrl}
                 className="max-h-[60vh] w-auto object-contain"
                 controls
                 playsInline
-                preload="metadata"
-                poster={`${project.videoUrl}#t=0.1`}
-              />
+                preload="none"
+                poster={project.posterUrl}
+              >
+                <source media="(max-width: 900px)" src={project.mobileVideoUrl} type="video/mp4" />
+                <source src={project.videoUrl} type="video/mp4" />
+              </video>
               {/* Video glow overlay */}
               <div 
                 className="absolute inset-0 pointer-events-none rounded-xl opacity-0 group-hover/video:opacity-100 transition-opacity duration-300"
@@ -319,18 +330,21 @@ export function ProjectsSection() {
                     }}
                   >
                     <video
-                      src={project.videoUrl}
                       className="h-full w-auto object-contain"
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      poster={project.posterUrl}
                       onMouseEnter={(e) => e.currentTarget.play()}
                       onMouseLeave={(e) => {
                         e.currentTarget.pause();
                         e.currentTarget.currentTime = 0;
                       }}
-                    />
+                    >
+                      <source media="(max-width: 900px)" src={project.mobileVideoUrl} type="video/mp4" />
+                      <source src={project.videoUrl} type="video/mp4" />
+                    </video>
                     {/* Play overlay */}
                     <div 
                       className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-100 group-hover/video:opacity-0 transition-opacity duration-300"
