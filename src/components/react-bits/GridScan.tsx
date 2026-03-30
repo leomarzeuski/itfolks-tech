@@ -5,6 +5,12 @@ import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberratio
 import * as THREE from 'three';
 
 type FaceApiModule = typeof import('face-api.js');
+type DeviceOrientationWithPermission = {
+  requestPermission?: () => Promise<'granted' | 'denied'>;
+};
+type VideoWithFrameCallback = HTMLVideoElement & {
+  requestVideoFrameCallback?: (callback: VideoFrameRequestCallback) => number;
+};
 
 type GridScanProps = {
   enableWebcam?: boolean;
@@ -346,6 +352,7 @@ export const GridScan: React.FC<GridScanProps> = ({
   const chromaRef = useRef<ChromaticAberrationEffect | null>(null);
   const faceApiRef = useRef<FaceApiModule | null>(null);
   const rafRef = useRef<number | null>(null);
+  const rendererInitFailedRef = useRef(false);
 
   const [modelsReady, setModelsReady] = useState(false);
   const [uiFaceActive, setUiFaceActive] = useState(false);
@@ -411,14 +418,10 @@ export const GridScan: React.FC<GridScanProps> = ({
     const onClick = async () => {
       const nowSec = performance.now() / 1000;
       if (scanOnClick) pushScan(nowSec);
-      if (
-        enableGyro &&
-        typeof window !== 'undefined' &&
-        (window as any).DeviceOrientationEvent &&
-        (DeviceOrientationEvent as any).requestPermission
-      ) {
+      const orientationEvent = window.DeviceOrientationEvent as unknown as DeviceOrientationWithPermission | undefined;
+      if (enableGyro && typeof orientationEvent?.requestPermission === 'function') {
         try {
-          await (DeviceOrientationEvent as any).requestPermission();
+          await orientationEvent.requestPermission();
         } catch { }
       }
     };
@@ -455,9 +458,16 @@ export const GridScan: React.FC<GridScanProps> = ({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container || rendererInitFailedRef.current) return;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    } catch {
+      rendererInitFailedRef.current = true;
+      return;
+    }
+
     rendererRef.current = renderer;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -601,7 +611,9 @@ export const GridScan: React.FC<GridScanProps> = ({
         composerRef.current = null;
       }
       renderer.dispose();
-      container.removeChild(renderer.domElement);
+      if (renderer.domElement.parentNode === container) {
+        container.removeChild(renderer.domElement);
+      }
     };
   }, [
     sensitivity,
@@ -613,7 +625,23 @@ export const GridScan: React.FC<GridScanProps> = ({
     lineStyle,
     lineJitter,
     scanDirection,
-    enablePost
+    enablePost,
+    bloomIntensity,
+    bloomThreshold,
+    bloomSmoothing,
+    chromaticAberration,
+    noiseIntensity,
+    scanGlow,
+    scanSoftness,
+    scanPhaseTaper,
+    scanDuration,
+    scanDelay,
+    skewScale,
+    tiltScale,
+    yawScale,
+    smoothTime,
+    maxSpeed,
+    yBoost
   ]);
 
   useEffect(() => {
@@ -638,8 +666,16 @@ export const GridScan: React.FC<GridScanProps> = ({
     }
     if (bloomRef.current) {
       bloomRef.current.blendMode.opacity.value = Math.max(0, bloomIntensity);
-      (bloomRef.current as any).luminanceMaterial.threshold = bloomThreshold;
-      (bloomRef.current as any).luminanceMaterial.smoothing = bloomSmoothing;
+      const bloomWithLuminance = bloomRef.current as BloomEffect & {
+        luminanceMaterial?: {
+          threshold: number;
+          smoothing: number;
+        };
+      };
+      if (bloomWithLuminance.luminanceMaterial) {
+        bloomWithLuminance.luminanceMaterial.threshold = bloomThreshold;
+        bloomWithLuminance.luminanceMaterial.smoothing = bloomSmoothing;
+      }
     }
     if (chromaRef.current) {
       chromaRef.current.offset.set(chromaticAberration, chromaticAberration);
@@ -712,21 +748,21 @@ export const GridScan: React.FC<GridScanProps> = ({
   useEffect(() => {
     let stop = false;
     let lastDetect = 0;
+    const videoEl = videoRef.current;
 
     const start = async () => {
       if (!enableWebcam || !modelsReady) return;
       const faceapi = faceApiRef.current;
       if (!faceapi) return;
-      const video = videoRef.current;
-      if (!video) return;
+      if (!videoEl) return;
 
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
           audio: false
         });
-        video.srcObject = stream;
-        await video.play();
+        videoEl.srcObject = stream;
+        await videoEl.play();
       } catch {
         return;
       }
@@ -739,12 +775,12 @@ export const GridScan: React.FC<GridScanProps> = ({
         if (ts - lastDetect >= 33) {
           lastDetect = ts;
           try {
-            const res = await faceapi.detectSingleFace(video, opts).withFaceLandmarks(true);
+            const res = await faceapi.detectSingleFace(videoEl, opts).withFaceLandmarks(true);
             if (res && res.detection) {
               const det = res.detection;
               const box = det.box;
-              const vw = video.videoWidth || 1;
-              const vh = video.videoHeight || 1;
+              const vw = videoEl.videoWidth || 1;
+              const vh = videoEl.videoHeight || 1;
 
               const cx = box.x + box.width * 0.5;
               const cy = box.y + box.height * 0.5;
@@ -791,8 +827,11 @@ export const GridScan: React.FC<GridScanProps> = ({
           }
         }
 
-        if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
-          (video as any).requestVideoFrameCallback(() => detect(performance.now()));
+        const videoWithCallback = videoEl as VideoWithFrameCallback;
+        if (typeof videoWithCallback.requestVideoFrameCallback === 'function') {
+          videoWithCallback.requestVideoFrameCallback(() => {
+            void detect(performance.now());
+          });
         } else {
           requestAnimationFrame(detect);
         }
@@ -805,12 +844,11 @@ export const GridScan: React.FC<GridScanProps> = ({
 
     return () => {
       stop = true;
-      const video = videoRef.current;
-      if (video) {
-        const stream = video.srcObject as MediaStream | null;
+      if (videoEl) {
+        const stream = videoEl.srcObject as MediaStream | null;
         if (stream) stream.getTracks().forEach(t => t.stop());
-        video.pause();
-        video.srcObject = null;
+        videoEl.pause();
+        videoEl.srcObject = null;
       }
     };
   }, [enableWebcam, modelsReady, depthResponse]);
@@ -854,7 +892,7 @@ function smoothDampVec2(
   const x = omega * deltaTime;
   const exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
 
-  let change = current.clone().sub(target);
+  const change = current.clone().sub(target);
   const originalTo = target.clone();
 
   const maxChange = maxSpeed * smoothTime;

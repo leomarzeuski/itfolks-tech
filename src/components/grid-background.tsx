@@ -8,13 +8,26 @@ const GridScan = dynamic(
   { ssr: false }
 );
 
+function supportsWebGL() {
+  const canvas = document.createElement("canvas");
+  try {
+    return Boolean(
+      canvas.getContext("webgl2") ||
+        canvas.getContext("webgl") ||
+        canvas.getContext("experimental-webgl")
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function GridBackground() {
   const shouldRender = useSyncExternalStore(
     () => () => {},
     () => {
       const mobile = window.matchMedia("(max-width: 900px)").matches;
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      return !mobile && !reduceMotion;
+      return !mobile && !reduceMotion && supportsWebGL();
     },
     () => false
   );
