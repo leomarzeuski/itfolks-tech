@@ -53,9 +53,9 @@
     "members": {
       "raul": {
         "name": "Raul",
-        "role": "Tech Lead / Scrum Master",
-        "specialty": "Frontend, Mobile & IA",
-        "bio": "Liderando arquitetura frontend, desenvolvimento mobile e projetos de IA. Especialista em IA generativa, agentes inteligentes e gestao agil com Scrum."
+        "role": "CTO",
+        "specialty": "Strapi, Migracao de Sistemas & IA",
+        "bio": "Liderando arquitetura de solucoes e evolucao tecnica. Especialista em Strapi, migracao de sistemas e implementacao de IA aplicada."
       },
       "leo": {
         "name": "Leonardo",

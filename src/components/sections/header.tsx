@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { BrandLogo } from "@/components/ui/brand-logo";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { getCalApi } from "@calcom/embed-react";
 
 const navItems = [
@@ -70,13 +70,7 @@ export function Header() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="relative w-10 h-10 rounded-lg overflow-hidden group-hover:neon-glow transition-all duration-300">
-              <Image src="/logoLight.jpeg" alt="automatechglobal" fill className="object-cover" sizes="40px" />
-            </div>
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-white">Automa</span>
-              <span className="gradient-text-blue">TechGlobal</span>
-            </span>
+            <BrandLogo className="group-hover:neon-glow transition-all duration-300" />
           </a>
 
           {/* Desktop Navigation */}

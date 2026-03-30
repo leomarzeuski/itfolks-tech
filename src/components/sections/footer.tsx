@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Github, Linkedin, Twitter, Mail, Calendar, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import { BrandLogo } from "@/components/ui/brand-logo";
 import { getCalApi } from "@calcom/embed-react";
 
 const socialLinks = [
@@ -58,13 +58,7 @@ export function Footer() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
-              <div className="relative w-10 h-10 rounded-lg overflow-hidden">
-                <Image src="/logoLight.jpeg" alt="automatechglobal" fill className="object-cover" sizes="40px" />
-              </div>
-              <span className="text-xl font-bold">
-                <span className="text-white">Automa</span>
-                <span className="gradient-text-blue">TechGlobal</span>
-              </span>
+              <BrandLogo />
             </a>
 
             <p className="text-zinc-500 max-w-sm mb-8 leading-relaxed">
