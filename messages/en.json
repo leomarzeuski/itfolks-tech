@@ -65,15 +65,15 @@
       },
       "higor": {
         "name": "Higor",
-        "role": "Backend Developer",
-        "specialty": "Node.js, Strapi, n8n & AI",
-        "bio": "Expert in building robust APIs with Node.js, Strapi CMS, n8n automations, and generative AI and intelligent agents solutions."
+        "role": "Full Stack Developer",
+        "specialty": "Node.js, Strapi, n8n, Full Stack, DevOps & AI",
+        "bio": "Full stack specialist across frontend and backend with Node.js, Strapi plugin development, n8n automations, DevOps practices, and AI-powered solutions."
       },
       "athos": {
-        "name": "Athos",
+        "name": "Atos",
         "role": "Python Developer",
-        "specialty": "Python, Data & AI",
-        "bio": "Python developer focused on data engineering, process automation, and implementing generative AI solutions."
+        "specialty": "Python, Data, Data Automation, Strapi & AI",
+        "bio": "Developer focused on Python, data engineering, automation, and AI, with experience using Strapi as a Headless CMS backend."
       },
       "pedro": {
         "name": "Pedro",
@@ -94,11 +94,10 @@
     "techLabel": "Technologies",
     "items": {
       "scheduling": {
-        "title": "The Apex Barber",
+        "title": "Apex Barber",
         "pain": "The barbershop struggled with manual scheduling: clients waiting in line with no way to book in advance, frequent no-shows, inability to choose a preferred barber, and wasted time managing walk-in queues.",
         "solution": "We built a complete barbershop website with online booking, a full-service catalog with pricing, barber selection, a gallery showcasing the craft, and client reviews — all optimized for mobile and deployed on Vercel.",
         "tags": [
-          "Next.js",
           "React",
           "TypeScript",
           "Tailwind CSS",
@@ -106,60 +105,70 @@
         ]
       },
       "trmil": {
-        "title": "Trmil",
+        "title": "TR-1000",
         "pain": "Company needed a professional digital presence to attract new clients and showcase their services in a modern, trustworthy way.",
-        "solution": "We created a modern, responsive, SEO-optimized institutional website with design aligned to the brand identity.",
+        "solution": "We built a platform with a React frontend and a Strapi (Headless CMS) backend on Node.js with TypeScript, including support for three languages: Portuguese, English, and Spanish.",
         "tags": [
-          "Next.js",
           "React",
           "Tailwind CSS",
-          "TypeScript"
+          "TypeScript",
+          "Node.js (TypeScript)",
+          "Strapi (Headless CMS)",
+          "i18n (PT/EN/ES)"
         ]
       },
       "prontu": {
-        "title": "Prontu / Tupuca",
+        "title": "Prontu Tupuca",
         "pain": "Need to connect sellers and buyers on an efficient digital platform with order and payment management.",
-        "solution": "We developed a complete marketplace platform with seller registration, product catalog, cart, checkout, and admin dashboard.",
+        "solution": "We developed a mobile and backend solution with Flutter for the app, Strapi as the Headless CMS, PostgreSQL as the database, and FastAPI as the main API orchestration layer.",
         "tags": [
-          "React",
-          "Node.js",
+          "Flutter",
+          "Strapi (Headless CMS)",
+          "Node.js (TypeScript)",
+          "React API",
           "PostgreSQL",
-          "Stripe",
-          "REST API"
+          "FastAPI"
         ]
       },
       "meihub": {
-        "title": "Mei Hub",
+        "title": "Main Hub",
         "pain": "Individual micro-entrepreneurs (MEI) had difficulty managing their tax obligations, finances, and documents in one place.",
         "solution": "We created a complete mobile app for MEI management with financial control, obligation reminders, and document issuance.",
         "tags": [
           "React Native",
           "Node.js",
           "Python",
-          "MongoDB"
+          "PostgreSQL",
+          "n8n"
         ]
       },
       "topdevjobs": {
         "title": "Top Dev Jobs",
         "pain": "Developers struggled to find relevant job openings and companies had difficulty reaching qualified tech talent.",
-        "solution": "We developed a specialized job platform for developers with advanced filters, personalized alerts, and intelligent matching between candidates and positions.",
+        "solution": "We developed a jobs platform with React and Node.js, including Google login, Web API validations, n8n automations, and a Strapi (Headless CMS) backend.",
         "tags": [
-          "React Native",
+          "React",
           "Node.js",
           "PostgreSQL",
-          "TypeScript"
+          "TypeScript",
+          "Strapi (Headless CMS)",
+          "n8n",
+          "Google OAuth",
+          "Web API"
         ]
       },
       "mrjay": {
         "title": "Mr. Jay",
         "pain": "Millions of Brazilians want to speak English but face expensive courses (R$200–500/month), fear of making mistakes, rigid class schedules, and apps that only teach vocabulary without any real conversation practice.",
-        "solution": "We built an AI-powered conversational English teacher available 24/7 in the browser. Mr. Jay adapts to each student's level, switches naturally between Portuguese and English, and creates a judgment-free space for daily speaking practice — with a free plan to lower the barrier to entry.",
+        "solution": "We built an AI-powered English teacher using React, TypeScript, OpenAI, and Node.js. Payments are handled via QR code and access is manually approved in Telegram after confirmation. The system currently works with 2 locales.",
         "tags": [
-          "Next.js",
+          "React",
           "TypeScript",
           "OpenAI",
           "Node.js",
-          "Stripe"
+          "QR Code Payment",
+          "Telegram Approval",
+          "i18n (2 locales)"
         ]
       }
     }

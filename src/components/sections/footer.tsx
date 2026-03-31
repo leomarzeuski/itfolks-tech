@@ -142,7 +142,7 @@ export function Footer() {
               <div>
                 <p className="text-xs text-zinc-500 mb-0.5">Email</p>
                 <span className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
-                  hello@automatechglobal.tech
+                  raul.balestra@automatechglobal.com
                 </span>
               </div>
             </div>

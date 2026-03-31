@@ -33,9 +33,9 @@ export async function generateMetadata({
     title: metadata.title,
     description: metadata.description,
     icons: {
-      icon: "/favicon.svg",
-      shortcut: "/favicon.svg",
-      apple: "/favicon.svg",
+      icon: "/favicon.png",
+      shortcut: "/favicon.png",
+      apple: "/apple-icon.png",
     },
     openGraph: {
       title: metadata.title,
