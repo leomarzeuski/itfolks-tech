@@ -86,8 +86,8 @@ export function HeroSection() {
           {/* Stats */}
           <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { value: "5+", label: "Years" },
-              { value: "50+", label: "Projects" },
+              { value: "2,5", label: "Years" },
+              { value: "15", label: "Projects" },
               { value: "100%", label: "Satisfaction" },
               { value: "24/7", label: "Support" },
             ].map((stat, index) => (
