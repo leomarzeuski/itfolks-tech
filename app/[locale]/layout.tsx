@@ -42,6 +42,20 @@ export async function generateMetadata({
       description: metadata.description,
       type: "website",
       locale: locale === "pt" ? "pt_BR" : "en_US",
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Automatech Global",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metadata.title,
+      description: metadata.description,
+      images: ["/og-image.jpg"],
     },
   };
 }

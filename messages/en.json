@@ -105,7 +105,7 @@
         ]
       },
       "trmil": {
-        "title": "TR-1000",
+        "title": "TRMIL",
         "pain": "Company needed a professional digital presence to attract new clients and showcase their services in a modern, trustworthy way.",
         "solution": "We built a platform with a React frontend and a Strapi (Headless CMS) backend on Node.js with TypeScript, including support for three languages: Portuguese, English, and Spanish.",
         "tags": [
@@ -130,7 +130,7 @@
         ]
       },
       "meihub": {
-        "title": "HubMei",
+        "title": "MeiHub",
         "pain": "Individual micro-entrepreneurs (MEI) had difficulty managing their tax obligations, finances, and documents in one place.",
         "solution": "We created a complete mobile app for MEI management with financial control, obligation reminders, and document issuance.",
         "tags": [
