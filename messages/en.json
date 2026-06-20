@@ -86,15 +86,17 @@
   "projects": {
     "sectionTag": "Our Work",
     "title": "Real Projects",
-    "description": "Real cases showing the client's pain point, how we solved it, and the technologies used",
+    "description": "A direct preview of what we do: real cases showing the client's pain point, how we solved it, and the technologies used",
     "viewProject": "View Project",
     "viewCode": "View Code",
     "painLabel": "Client Pain Point",
     "solutionLabel": "Our Solution",
     "techLabel": "Technologies",
+    "videoSoon": "Video slot reserved",
     "items": {
       "scheduling": {
         "title": "Apex Barber",
+        "summary": "Barbershop scheduling website with service catalog, professional selection, and a mobile-first experience.",
         "pain": "The barbershop struggled with manual scheduling: clients waiting in line with no way to book in advance, frequent no-shows, inability to choose a preferred barber, and wasted time managing walk-in queues.",
         "solution": "We built a complete barbershop website with online booking, a full-service catalog with pricing, barber selection, a gallery showcasing the craft, and client reviews — all optimized for mobile and deployed on Vercel.",
         "tags": [
@@ -106,6 +108,7 @@
       },
       "trmil": {
         "title": "TRMIL",
+        "summary": "Multilingual institutional platform to present services, build trust, and capture new customers.",
         "pain": "Company needed a professional digital presence to attract new clients and showcase their services in a modern, trustworthy way.",
         "solution": "We built a platform with a React frontend and a Strapi (Headless CMS) backend on Node.js with TypeScript, including support for three languages: Portuguese, English, and Spanish.",
         "tags": [
@@ -119,6 +122,7 @@
       },
       "prontu": {
         "title": "Prontu Tupuca",
+        "summary": "Mobile and backend solution to connect buyers and sellers with orders, payments, and centralized operations.",
         "pain": "Need to connect sellers and buyers on an efficient digital platform with order and payment management.",
         "solution": "We developed a mobile and backend solution with Flutter for the app, Strapi as the Headless CMS, PostgreSQL as the database, and FastAPI as the main API orchestration layer.",
         "tags": [
@@ -131,8 +135,9 @@
       },
       "meihub": {
         "title": "MeiHub",
+        "summary": "MEI management app with financial control, reminders, documents, and fiscal organization in a simple mobile flow.",
         "pain": "Individual micro-entrepreneurs (MEI) had difficulty managing their tax obligations, finances, and documents in one place.",
-        "solution": "We created a complete mobile app for MEI management with financial control, obligation reminders, and document issuance.",
+        "solution": "We created a complete mobile app for MEI management with financial control, obligation reminders, document organization, and a base prepared for automated fiscal routines.",
         "tags": [
           "React Native",
           "Node.js",
@@ -141,8 +146,37 @@
           "n8n"
         ]
       },
+      "notahub": {
+        "title": "NotaHub",
+        "summary": "A central workspace for invoice issuance, history, and operations, connecting fiscal routines to automated flows.",
+        "pain": "Small businesses were losing time switching between systems, spreadsheets, and manual processes to track invoice issuance, status, and history.",
+        "solution": "We structured a hub to centralize fiscal data, invoice statuses, registrations, and automations, with room for issuance API integrations and a product demo video.",
+        "tags": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "Fiscal APIs",
+          "Automation"
+        ]
+      },
+      "oficinaPdv": {
+        "title": "Workshop POS",
+        "summary": "Point-of-sale system for a workshop with service flow, checkout, products, services, and invoice generation.",
+        "pain": "The workshop needed to register sales and services, organize cash flow, track service items, and generate invoices without operational rework.",
+        "solution": "We developed a POS flow with product and service entries, service summaries, checkout, and a structure prepared for invoice issuance and a demo video.",
+        "tags": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "POS",
+          "Invoices"
+        ]
+      },
       "topdevjobs": {
         "title": "Top Dev Jobs",
+        "summary": "Jobs platform connecting companies and developers with login, validations, and automations.",
         "pain": "Developers struggled to find relevant job openings and companies had difficulty reaching qualified tech talent.",
         "solution": "We developed a jobs platform with React and Node.js, including Google login, Web API validations, n8n automations, and a Strapi (Headless CMS) backend.",
         "tags": [
@@ -158,6 +192,7 @@
       },
       "mrjay": {
         "title": "Mr. Jay",
+        "summary": "AI English teacher for conversation practice with QR code payments and operational approval through Telegram.",
         "pain": "Millions of Brazilians want to speak English but face expensive courses (R$200–500/month), fear of making mistakes, rigid class schedules, and apps that only teach vocabulary without any real conversation practice.",
         "solution": "We built an AI-powered English teacher using React, TypeScript, OpenAI, and Node.js. Payments are handled via QR code and access is manually approved in Telegram after confirmation. The system currently works with 2 locales.",
         "tags": [

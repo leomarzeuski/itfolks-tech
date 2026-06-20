@@ -54,10 +54,7 @@ function TeamModal({
   t: ReturnType<typeof useTranslations>;
   onClose: () => void;
 }) {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -69,7 +66,7 @@ function TeamModal({
     };
   }, [onClose]);
 
-  if (!mounted) return null;
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <div 

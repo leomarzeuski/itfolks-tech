@@ -86,15 +86,17 @@
   "projects": {
     "sectionTag": "Nosso Trabalho",
     "title": "Projetos Reais",
-    "description": "Cases reais com a dor do cliente, como resolvemos e as tecnologias utilizadas",
+    "description": "Um preview direto do que fazemos: cases reais com a dor do cliente, como resolvemos e as tecnologias utilizadas",
     "viewProject": "Ver Projeto",
     "viewCode": "Ver Codigo",
     "painLabel": "Dor do Cliente",
     "solutionLabel": "Nossa Solucao",
     "techLabel": "Tecnologias",
+    "videoSoon": "Espaco reservado para video",
     "items": {
       "scheduling": {
         "title": "Apex Barber",
+        "summary": "Site de agendamento para barbearia com catalogo, selecao de profissional e experiencia mobile.",
         "pain": "A barbearia sofria com agendamentos manuais: clientes na fila sem possibilidade de reservar com antecedencia, no-shows frequentes, impossibilidade de escolher o barbeiro preferido e tempo desperdicado gerenciando walk-ins.",
         "solution": "Desenvolvemos um site completo para a barbearia com agendamento online, catalogo de servicos com precos, selecao de barbeiro, galeria de trabalhos e avaliacoes de clientes — tudo otimizado para mobile e publicado na Vercel.",
         "tags": [
@@ -106,6 +108,7 @@
       },
       "trmil": {
         "title": "TRMIL",
+        "summary": "Plataforma institucional multilingue para apresentar servicos, gerar confianca e captar novos clientes.",
         "pain": "Empresa precisava de presenca digital profissional para atrair novos clientes e apresentar seus servicos de forma moderna e confiavel.",
         "solution": "Criamos uma plataforma com frontend em React e backend em Strapi (Headless CMS) com Node.js em TypeScript, incluindo suporte a tres idiomas: portugues, ingles e espanhol.",
         "tags": [
@@ -119,6 +122,7 @@
       },
       "prontu": {
         "title": "Prontu Tupuca",
+        "summary": "Solucao mobile e backend para conectar compradores e vendedores com pedidos, pagamentos e operacao centralizada.",
         "pain": "Necessidade de conectar vendedores e compradores em uma plataforma digital eficiente, com gestao de pedidos e pagamentos.",
         "solution": "Desenvolvemos uma solucao mobile e backend com Flutter no app, Strapi como Headless CMS, PostgreSQL como banco e FastAPI como orquestrador principal das chamadas de API.",
         "tags": [
@@ -131,8 +135,9 @@
       },
       "meihub": {
         "title": "MeiHub",
+        "summary": "App de gestao para MEIs com controle financeiro, lembretes, documentos e organizacao fiscal em um fluxo mobile simples.",
         "pain": "Microempreendedores individuais (MEI) tinham dificuldade em gerenciar suas obrigacoes fiscais, financas e documentos em um so lugar.",
-        "solution": "Criamos um app mobile completo para gestao do MEI com controle financeiro, lembretes de obrigacoes e emissao de documentos.",
+        "solution": "Criamos um app mobile completo para gestao do MEI com controle financeiro, lembretes de obrigacoes, organizacao de documentos e base preparada para rotinas fiscais automatizadas.",
         "tags": [
           "React Native",
           "Node.js",
@@ -141,8 +146,37 @@
           "n8n"
         ]
       },
+      "notahub": {
+        "title": "NotaHub",
+        "summary": "Central para organizar emissao, historico e operacao de notas fiscais, conectando rotinas fiscais a fluxos automatizados.",
+        "pain": "Pequenos negocios perdiam tempo alternando entre sistemas, planilhas e processos manuais para acompanhar emissao, status e historico de notas.",
+        "solution": "Estruturamos um hub para centralizar dados fiscais, status de notas, cadastros e automacoes, deixando espaco para integracoes com APIs de emissao e demonstracao em video.",
+        "tags": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "APIs Fiscais",
+          "Automacao"
+        ]
+      },
+      "oficinaPdv": {
+        "title": "PDV Oficina",
+        "summary": "Sistema de ponto de venda para oficina com atendimento, fechamento, produtos, servicos e geracao de notas.",
+        "pain": "A oficina precisava registrar vendas e servicos, organizar caixa, acompanhar itens de atendimento e gerar notas sem retrabalho operacional.",
+        "solution": "Desenvolvemos um fluxo de PDV com lancamento de produtos e servicos, resumo de atendimento, fechamento de venda e estrutura preparada para emissao de notas e video demonstrativo.",
+        "tags": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "PDV",
+          "Notas Fiscais"
+        ]
+      },
       "topdevjobs": {
         "title": "Top Dev Jobs",
+        "summary": "Plataforma de vagas para aproximar empresas e desenvolvedores com login, validacoes e automacoes.",
         "pain": "Desenvolvedores enfrentavam dificuldade em encontrar vagas de emprego relevantes e empresas tinham problemas para alcançar talentos qualificados na área de tecnologia.",
         "solution": "Desenvolvemos uma plataforma de empregos com React e Node.js, incluindo login com Google, validacoes de Web API, automacoes com n8n e backend em Strapi (Headless CMS).",
         "tags": [
@@ -158,6 +192,7 @@
       },
       "mrjay": {
         "title": "Mr. Jay",
+        "summary": "Professor de ingles com IA para pratica de conversa, pagamento por QR Code e aprovacao operacional via Telegram.",
         "pain": "Milhoes de brasileiros querem falar ingles mas enfrentam cursos caros (R$200–500/mes), vergonha de errar, horarios rigidos e apps que so ensinam vocabulario sem nenhuma pratica real de conversacao.",
         "solution": "Desenvolvemos um professor de ingles com IA usando React, TypeScript, OpenAI e Node.js. O pagamento e feito por QR Code e a liberacao de acesso acontece via aprovacao manual no Telegram. O sistema trabalha com 2 locales.",
         "tags": [

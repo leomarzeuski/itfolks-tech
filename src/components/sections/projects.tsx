@@ -13,7 +13,16 @@ import {
   Play,
 } from "lucide-react";
 
-const projects = [
+type Project = {
+  key: string;
+  color: string;
+  accentColor: string;
+  videoUrl?: string;
+  mobileVideoUrl?: string;
+  posterUrl?: string;
+};
+
+const projects: Project[] = [
   {
     key: "scheduling",
     color: "#A855F7",
@@ -47,6 +56,16 @@ const projects = [
     posterUrl: "/videos/posters/hubmei.jpg",
   },
   {
+    key: "notahub",
+    color: "#22C55E",
+    accentColor: "#14B8A6",
+  },
+  {
+    key: "oficinaPdv",
+    color: "#F97316",
+    accentColor: "#EF4444",
+  },
+  {
     key: "topdevjobs",
     color: "#10B981",
     accentColor: "#059669",
@@ -64,12 +83,48 @@ const projects = [
   },
 ];
 
+function VideoPlaceholder({
+  project,
+  label,
+  variant = "card",
+}: {
+  project: Project;
+  label: string;
+  variant?: "card" | "modal";
+}) {
+  return (
+    <div
+      className={`${
+        variant === "card" ? "mb-6 h-48" : "mb-8 aspect-video"
+      } rounded-xl overflow-hidden relative flex items-center justify-center bg-black/20`}
+      style={{
+        background: `linear-gradient(135deg, ${project.color}10, ${project.accentColor}08)`,
+        boxShadow: `0 0 20px ${project.color}10`,
+        border: `1px solid ${project.color}20`,
+      }}
+    >
+      <div className="flex flex-col items-center gap-3 text-zinc-500">
+        <div
+          className="w-14 h-14 rounded-full flex items-center justify-center"
+          style={{
+            backgroundColor: `${project.color}20`,
+            border: `1px solid ${project.color}35`,
+          }}
+        >
+          <Play className="h-6 w-6 ml-0.5" style={{ color: project.color }} />
+        </div>
+        <span className="text-sm font-medium">{label}</span>
+      </div>
+    </div>
+  );
+}
+
 function ProjectModal({
   project,
   t,
   onClose,
 }: {
-  project: (typeof projects)[0];
+  project: Project;
   t: ReturnType<typeof useTranslations>;
   onClose: () => void;
 }) {
@@ -134,6 +189,9 @@ function ProjectModal({
           >
             {t(`items.${project.key}.title`)}
           </h3>
+          <p className="mb-6 text-sm text-zinc-400 leading-relaxed">
+            {t(`items.${project.key}.summary`)}
+          </p>
 
           {/* Video Player */}
           {project.videoUrl ? (
@@ -151,7 +209,9 @@ function ProjectModal({
                 preload="none"
                 poster={project.posterUrl}
               >
-                <source media="(max-width: 900px)" src={project.mobileVideoUrl} type="video/mp4" />
+                {project.mobileVideoUrl && (
+                  <source media="(max-width: 900px)" src={project.mobileVideoUrl} type="video/mp4" />
+                )}
                 <source src={project.videoUrl} type="video/mp4" />
               </video>
               {/* Video glow overlay */}
@@ -163,26 +223,7 @@ function ProjectModal({
               />
             </div>
           ) : (
-            <div
-              className="mb-8 rounded-xl aspect-video flex items-center justify-center"
-              style={{
-                background: `linear-gradient(135deg, ${project.color}10, ${project.accentColor}08)`,
-                border: `1px solid ${project.color}20`,
-              }}
-            >
-              <div className="flex flex-col items-center gap-3 text-zinc-500">
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: `${project.color}15` }}
-                >
-                  <Play
-                    className="h-8 w-8 ml-1"
-                    style={{ color: project.color }}
-                  />
-                </div>
-                <span className="text-sm font-medium">Video em breve</span>
-              </div>
-            </div>
+            <VideoPlaceholder project={project} label={t("videoSoon")} variant="modal" />
           )}
 
           {/* Pain Point */}
@@ -265,7 +306,7 @@ function ProjectModal({
 export function ProjectsSection() {
   const t = useTranslations("projects");
   const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
+    Project | null
   >(null);
 
   return (
@@ -319,9 +360,12 @@ export function ProjectsSection() {
                 >
                   {t(`items.${project.key}.title`)}
                 </h3>
+                <p className="mb-5 text-sm text-zinc-400 leading-relaxed line-clamp-3">
+                  {t(`items.${project.key}.summary`)}
+                </p>
 
                 {/* Video Preview */}
-                {project.videoUrl && (
+                {project.videoUrl ? (
                   <div 
                     className="mb-6 rounded-xl overflow-hidden h-48 relative group/video flex justify-center bg-black/20"
                     style={{
@@ -342,7 +386,9 @@ export function ProjectsSection() {
                         e.currentTarget.currentTime = 0;
                       }}
                     >
-                      <source media="(max-width: 900px)" src={project.mobileVideoUrl} type="video/mp4" />
+                      {project.mobileVideoUrl && (
+                        <source media="(max-width: 900px)" src={project.mobileVideoUrl} type="video/mp4" />
+                      )}
                       <source src={project.videoUrl} type="video/mp4" />
                     </video>
                     {/* Play overlay */}
@@ -364,6 +410,8 @@ export function ProjectsSection() {
                       }}
                     />
                   </div>
+                ) : (
+                  <VideoPlaceholder project={project} label={t("videoSoon")} />
                 )}
 
                 {/* Pain Point */}
