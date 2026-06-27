@@ -1,164 +1,80 @@
-"use client";
-
-import { useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { Github, Linkedin, Twitter, Mail, Calendar, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, type LucideIcon } from "lucide-react";
 import { BrandLogo } from "@/components/ui/brand-logo";
-import { getCalApi } from "@calcom/embed-react";
+import type { Global } from "@/types/strapi";
 
-const socialLinks = [
-  { name: "GitHub", icon: Github, href: "https://github.com/automatechglobal" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/automatechglobal" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/automatechglobal" },
-];
+const SOCIAL_ICONS: Record<string, LucideIcon> = {
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  x: Twitter,
+};
 
-const quickLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Team", href: "#team" },
-  { label: "Tech Stack", href: "#tech-stack" },
-];
-
-export function Footer() {
-  const t = useTranslations("footer");
-  const currentYear = new Date().getFullYear();
-
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi();
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          dark: { "cal-brand": "#3B82F6" },
-          light: { "cal-brand": "#3B82F6" },
-        },
-        hideEventTypeDetails: false,
-      });
-    })();
-  }, []);
-
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+export function Footer({ global }: { global: Global }) {
+  const year = new Date().getFullYear();
+  const footer = global.footer;
 
   return (
-    <footer id="contact" className="relative border-t border-white/5 bg-[#09090b]">
-      {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-[#3B82F6]/50 to-transparent" />
+    <footer className="border-t border-border px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+          <div>
+            <BrandLogo />
+            {footer?.tagline && (
+              <p className="mt-4 max-w-xs text-sm text-muted-foreground">{footer.tagline}</p>
+            )}
+            {global.contactEmail && (
+              <a
+                href={`mailto:${global.contactEmail}`}
+                className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Mail className="h-4 w-4" />
+                {global.contactEmail}
+              </a>
+            )}
+          </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-          {/* Brand Column */}
-          <div className="lg:col-span-5">
-            <a
-              href="#"
-              className="group inline-flex items-center gap-2.5 mb-6"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            >
-              <BrandLogo />
-            </a>
+          {footer?.linkGroups?.map((group, i) => (
+            <div key={i}>
+              <h3 className="text-sm font-medium">{group.title}</h3>
+              <ul className="mt-3 space-y-2">
+                {group.links?.map((l, li) => (
+                  <li key={li}>
+                    <a
+                      href={l.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-            <p className="text-zinc-500 max-w-sm mb-8 leading-relaxed">
-              {t("description")}
-            </p>
-
-            {/* Social Links */}
-            <div className="flex gap-2">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+          <p className="text-xs text-muted-foreground">
+            © {year} {global.siteName}
+          </p>
+          {global.socials && global.socials.length > 0 && (
+            <div className="flex items-center gap-4">
+              {global.socials.map((s, i) => {
+                const Ic = SOCIAL_ICONS[s.platform.toLowerCase()] ?? Mail;
                 return (
                   <a
-                    key={link.name}
-                    href={link.href}
+                    key={i}
+                    href={s.url}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-500 hover:text-[#3B82F6] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all"
-                    aria-label={link.name}
+                    rel="noreferrer"
+                    aria-label={s.platform}
+                    className="text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    <Icon className="h-4 w-4" />
+                    <Ic className="h-4 w-4" />
                   </a>
                 );
               })}
             </div>
-          </div>
-
-          {/* Links Column */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
-              Navigation
-            </h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollTo(link.href);
-                    }}
-                    className="group inline-flex items-center gap-1 text-sm text-zinc-400 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Column */}
-          <div className="lg:col-span-4">
-            <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
-              Get in Touch
-            </h4>
-            <button
-              data-cal-link="raul-balestra-kovpgt/raulbalestra"
-              className="group w-full flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all mb-3 cursor-pointer text-left"
-            >
-              <div className="w-10 h-10 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center shrink-0">
-                <Calendar className="h-4 w-4 text-[#3B82F6]" />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500 mb-0.5">{t("bookCall")}</p>
-                <span className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
-                  {t("scheduleNow")}
-                </span>
-              </div>
-            </button>
-
-            <div
-              className="group flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all cursor-pointer"
-              role="button"
-              onClick={() => {
-                window.location.href = "mailto:hello@automatechglobal.tech";
-              }}
-            >
-              <div className="w-10 h-10 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center shrink-0">
-                <Mail className="h-4 w-4 text-[#3B82F6]" />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500 mb-0.5">Email</p>
-                <span className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
-                  raul.balestra@automatechglobal.com
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-zinc-600">
-            &copy; {currentYear} automatechglobal Tech. {t("rights")}
-          </p>
-          <p className="text-xs text-zinc-600 flex items-center gap-1.5">
-            {t("madeWith")}
-            <span className="inline-block w-3 h-3 bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] rounded-sm animate-pulse" />
-            {t("by")}
-          </p>
+          )}
         </div>
       </div>
     </footer>

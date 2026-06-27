@@ -1,146 +1,105 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { BrandLogo } from "@/components/ui/brand-logo";
 import { cn } from "@/lib/utils";
-import { getCalApi } from "@calcom/embed-react";
+import type { LinkItem } from "@/types/strapi";
 
-const navItems = [
-  { key: "services", href: "#services" },
-  { key: "team", href: "#team" },
-  { key: "projects", href: "#projects" },
-  { key: "methodology", href: "#methodology" },
-  { key: "techStack", href: "#tech-stack" },
-];
-
-export function Header() {
-  const t = useTranslations("nav");
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+export function Header({
+  nav,
+  calLink,
+  ctaLabel,
+  siteName,
+}: {
+  nav: LinkItem[];
+  calLink?: string;
+  ctaLabel: string;
+  siteName: string;
+}) {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    (async function () {
-      const cal = await getCalApi();
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          dark: { "cal-brand": "#3B82F6" },
-          light: { "cal-brand": "#3B82F6" },
-        },
-        hideEventTypeDetails: false,
-      });
-    })();
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled
+          ? "border-b border-border bg-background/80 backdrop-blur-md"
+          : "border-b border-transparent"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="#"
-            className="group flex items-center gap-2.5"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            <BrandLogo className="group-hover:neon-glow transition-all duration-300" />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <a href="#top" className="flex items-center gap-2.5" aria-label={siteName}>
+            <BrandLogo />
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.key}
-                onClick={() => scrollToSection(item.href)}
-                className="relative px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors group"
+          <nav className="hidden items-center gap-1 md:flex">
+            {nav.map((item) => (
+              <a
+                key={item.href + item.label}
+                href={item.href}
+                className="px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                {t(item.key)}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] group-hover:w-full transition-all duration-300" />
-              </button>
+                {item.label}
+              </a>
             ))}
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden items-center gap-3 md:flex">
             <LanguageSwitcher />
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] rounded-full opacity-60 blur-md group-hover:opacity-100 animate-pulse transition-opacity" />
-              <Button
-                data-cal-link="raul-balestra-kovpgt/raulbalestra"
-                size="sm"
-                className="relative btn-neon rounded-full px-6"
-              >
-                <span>{t("contact")}</span>
+            {calLink && (
+              <Button data-cal-link={calLink} size="sm">
+                {ctaLabel}
               </Button>
-            </div>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex items-center gap-2 md:hidden">
             <LanguageSwitcher />
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-all"
+              onClick={() => setOpen(!open)}
+              className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              aria-label="Toggle menu"
+              aria-expanded={open}
             >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-300",
-            isMobileMenuOpen ? "max-h-80 mt-4" : "max-h-0"
+            "overflow-hidden transition-all duration-300 md:hidden",
+            open ? "max-h-96 pb-4" : "max-h-0"
           )}
         >
-          <nav className="flex flex-col gap-1 glass rounded-xl p-4">
-            {navItems.map((item) => (
-              <button
-                key={item.key}
-                onClick={() => scrollToSection(item.href)}
-                className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-all rounded-lg text-left"
+          <nav className="surface flex flex-col gap-1 p-2">
+            {nav.map((item) => (
+              <a
+                key={item.href + item.label}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
-                {t(item.key)}
-              </button>
+                {item.label}
+              </a>
             ))}
-            <Button
-              data-cal-link="raul-balestra-kovpgt/raulbalestra"
-              className="btn-neon mt-2 rounded-full"
-            >
-              <span>{t("contact")}</span>
-            </Button>
+            {calLink && (
+              <Button data-cal-link={calLink} className="mt-1" onClick={() => setOpen(false)}>
+                {ctaLabel}
+              </Button>
+            )}
           </nav>
         </div>
       </div>

@@ -1,0 +1,36 @@
+{
+  "name": "automatechglobal-tech",
+  "framework": "next",
+  "preview": {
+    "url": "http://localhost:3000",
+    "draftParam": "preview",
+    "locales": ["en", "pt"],
+    "defaultLocale": "en"
+  },
+  "strapi": {
+    "url": "http://localhost:1337"
+  },
+  "contentTypes": {
+    "api::homepage.homepage": {
+      "kind": "singleType",
+      "draftAndPublish": true,
+      "localized": true,
+      "route": "/"
+    },
+    "api::case-study.case-study": {
+      "kind": "collectionType",
+      "draftAndPublish": true,
+      "localized": true
+    },
+    "api::testimonial.testimonial": {
+      "kind": "collectionType",
+      "draftAndPublish": true,
+      "localized": true
+    },
+    "api::global.global": {
+      "kind": "singleType",
+      "draftAndPublish": false,
+      "localized": true
+    }
+  }
+}

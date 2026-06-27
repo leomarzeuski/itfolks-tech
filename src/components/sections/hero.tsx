@@ -1,111 +1,184 @@
-"use client";
-
-import { useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getCalApi } from "@calcom/embed-react";
+import { Reveal } from "@/components/reveal";
+import { HeroVisual } from "@/components/hero-visual";
+import { SoftAuroraBackground } from "@/components/soft-aurora-background";
+import DecryptedText from "@/components/DecryptedText";
+import TextType from "@/components/TextType";
+import CountUp from "@/components/CountUp";
+import type { Hero as HeroType } from "@/types/strapi";
 
-export function HeroSection() {
-  const t = useTranslations("hero");
-
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi();
-      cal("ui", {
-        theme: "dark",
-        cssVarsPerTheme: {
-          dark: { "cal-brand": "#3B82F6" },
-          light: { "cal-brand": "#3B82F6" },
-        },
-        hideEventTypeDetails: false,
-      });
-    })();
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+/** Splits a stat like "30+" / "100%" into an animated number + static suffix. */
+function StatValue({ value }: { value: string }) {
+  const match = value.match(/^(\d+(?:[.,]\d+)?)(.*)$/);
+  if (!match) return <>{value}</>;
+  const num = parseFloat(match[1].replace(",", "."));
+  const suffix = match[2];
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-gradient">
-      {/* Ambient Glow Effects */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#3B82F6]/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-[#06B6D4]/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#6366F1]/10 rounded-full blur-[150px]" />
+    <>
+      <CountUp to={num} duration={1.6} />
+      {suffix}
+    </>
+  );
+}
+
+/** Renders the title with the last word(s) in the brand gradient. */
+function GradientTitle({ title }: { title: string }) {
+  const words = title.trim().split(/\s+/);
+  const tailCount = words.length > 3 ? 2 : 1;
+  const head = words.slice(0, words.length - tailCount).join(" ");
+  const tail = words.slice(words.length - tailCount).join(" ");
+  return (
+    <>
+      {head && `${head} `}
+      <span className="text-brand-gradient">{tail}</span>
+    </>
+  );
+}
+
+export function Hero({
+  data,
+  calLink,
+  industries,
+}: {
+  data: HeroType;
+  calLink?: string;
+  industries?: string[];
+}) {
+  return (
+    <section
+      id="top"
+      className="relative isolate overflow-hidden px-4 pb-24 pt-36 sm:px-6 md:pb-32 md:pt-44 lg:px-8"
+    >
+      {/* React Bits: Soft Aurora — gentle brand-tinted glow band */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 -top-20 -z-10 h-[85vh] opacity-90 [mask-image:radial-gradient(75%_60%_at_50%_22%,black,transparent_82%)]"
+      >
+        <SoftAuroraBackground
+          color1="#38bdf8"
+          color2="#a855f7"
+          speed={0.6}
+          scale={1.5}
+          brightness={1}
+          noiseFrequency={2.5}
+          bandHeight={0.5}
+          enableMouseInteraction={false}
+        />
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-5xl mx-auto">
-          {/* Badge */}
-          <div className="flex justify-center mb-8">
-            <div className="tech-badge">
-              <Terminal className="h-3.5 w-3.5" />
-              <span>{t("badge")}</span>
-            </div>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-8">
-            <span className="block text-white">{t("title")}</span>
-            <span className="block gradient-text mt-2">{t("titleHighlight")}</span>
-          </h1>
-
-          {/* Description */}
-          <p className="text-center text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-            {t("description")}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              data-cal-link="raul-balestra-kovpgt/raulbalestra"
-              className="btn-neon rounded-full text-base px-8 py-6 gap-2 group"
-            >
-              <span className="flex items-center gap-2">
-                {t("cta")}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      <div className="mx-auto max-w-4xl text-center">
+        {data.eyebrow && (
+          <Reveal>
+            <span className="pill mb-6 inline-flex items-center gap-2 font-mono text-xs">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
               </span>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollToSection("#services")}
-              className="btn-ghost-neon rounded-full text-base px-8 py-6"
-            >
-              {t("ctaSecondary")}
-            </Button>
-          </div>
+              <DecryptedText
+                text={data.eyebrow}
+                animateOn="view"
+                sequential
+                speed={40}
+                className="text-muted-foreground"
+                encryptedClassName="text-accent/70"
+              />
+            </span>
+          </Reveal>
+        )}
 
-          {/* Stats */}
-          <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {[
-              { value: "2,5", label: "Years" },
-              { value: "15", label: "Projects" },
-              { value: "100%", label: "Satisfaction" },
-              { value: "24/7", label: "Support" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="text-4xl sm:text-5xl font-bold gradient-text-blue mb-2 group-hover:text-glow transition-all">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-zinc-500 uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+        <Reveal delay={60}>
+          <h1 className="text-balance text-5xl font-semibold leading-[1.03] tracking-tight sm:text-6xl md:text-7xl">
+            <GradientTitle title={data.title} />
+          </h1>
+        </Reveal>
+
+        {data.subtitle && (
+          <Reveal delay={120}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              {data.subtitle}
+            </p>
+          </Reveal>
+        )}
+
+        {industries && industries.length > 0 && (
+          <Reveal delay={160}>
+            <div className="mt-5 flex items-center justify-center gap-2 font-mono text-sm">
+              <span className="text-accent">{">"} built for</span>
+              <TextType
+                text={industries}
+                typingSpeed={65}
+                pauseDuration={1500}
+                deletingSpeed={35}
+                loop
+                startOnVisible
+                showCursor
+                cursorCharacter="_"
+                textColors={["#8a91f0"]}
+                className="text-foreground"
+                cursorClassName="text-accent"
+              />
+            </div>
+          </Reveal>
+        )}
+
+        <Reveal delay={200}>
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            {data.primaryCta &&
+              (calLink ? (
+                <Button
+                  size="lg"
+                  data-cal-link={calLink}
+                  className="shadow-[0_10px_40px_-8px_rgba(124,92,255,0.55)]"
+                >
+                  {data.primaryCta.label}
+                </Button>
+              ) : (
+                <Button
+                  size="lg"
+                  asChild
+                  className="shadow-[0_10px_40px_-8px_rgba(124,92,255,0.55)]"
+                >
+                  <a href={data.primaryCta.href}>{data.primaryCta.label}</a>
+                </Button>
+              ))}
+            {data.secondaryCta && (
+              <Button size="lg" variant="secondary" asChild>
+                <a href={data.secondaryCta.href}>
+                  {data.secondaryCta.label}
+                  <ArrowRight />
+                </a>
+              </Button>
+            )}
           </div>
-        </div>
+        </Reveal>
+
+        {data.stats && data.stats.length > 0 && (
+          <Reveal delay={240}>
+            <dl className="mx-auto mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-border pt-8">
+              {data.stats.map((s, i) => (
+                <div key={i}>
+                  <dt className="text-2xl font-semibold md:text-3xl">
+                    <StatValue value={s.value} />
+                  </dt>
+                  <dd className="mt-1 text-sm text-muted-foreground">{s.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        )}
       </div>
 
-      {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#09090b] to-transparent pointer-events-none" />
+      {/* Product showcase — glowing app window with a dashboard mockup */}
+      <Reveal delay={300}>
+        <div className="relative mx-auto mt-16 max-w-5xl md:mt-20">
+          <div
+            aria-hidden
+            className="absolute -inset-x-12 -top-12 bottom-0 -z-10 bg-[radial-gradient(50%_50%_at_50%_25%,rgba(109,94,252,0.25),transparent_70%)] blur-2xl"
+          />
+          <HeroVisual />
+        </div>
+      </Reveal>
     </section>
   );
 }
