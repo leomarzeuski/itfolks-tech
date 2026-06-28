@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { SectionHeader } from "@/components/section-header";
+import { GlowCard } from "@/components/glow-card";
 import { cn } from "@/lib/utils";
 import type { FaqItem } from "@/types/strapi";
 
@@ -15,14 +16,14 @@ export function Faq({ label, data }: { label: string; data: FaqItem[] }) {
       <div className="mx-auto max-w-3xl">
         <SectionHeader label={label} />
 
-        <div className="mt-8 divide-y divide-border overflow-hidden rounded-xl border border-border">
+        <div className="mt-8 space-y-3">
           {data.map((item, i) => {
             const isOpen = open === i;
             return (
-              <div key={i} className="bg-card">
+              <GlowCard key={i} glowRadius={26}>
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                   aria-expanded={isOpen}
                 >
                   <span className="font-medium">{item.question}</span>
@@ -44,7 +45,7 @@ export function Faq({ label, data }: { label: string; data: FaqItem[] }) {
                     </p>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             );
           })}
         </div>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { X, Play, ArrowUpRight, AlertTriangle, CheckCircle2, Cpu } from "lucide-react";
 import { SectionHeader } from "@/components/section-header";
 import { Reveal } from "@/components/reveal";
+import { GlowCard } from "@/components/glow-card";
 import type { CaseStudy } from "@/types/strapi";
 
 type Labels = {
@@ -152,39 +153,43 @@ export function Work({
       <div className="mx-auto max-w-6xl">
         <SectionHeader label={label} />
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {data.map((cs, i) => (
             <Reveal key={cs.documentId ?? i} delay={(i % 3) * 60}>
-              <button
-                onClick={() => setActive(cs)}
-                className="surface surface-hover group flex h-full w-full flex-col overflow-hidden text-left"
-              >
-                <div className="relative aspect-video w-full overflow-hidden">
-                  <Poster cs={cs} />
-                  {cs.videoUrl && (
-                    <span className="absolute inset-0 flex items-center justify-center">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-black/55 backdrop-blur transition-transform duration-300 group-hover:scale-110">
-                        <Play className="ml-0.5 h-5 w-5 text-white" />
+              <GlowCard className="h-full">
+                <button
+                  onClick={() => setActive(cs)}
+                  className="group flex h-full w-full cursor-pointer flex-col text-left"
+                >
+                  <div className="relative aspect-video w-full overflow-hidden rounded-t-[13px]">
+                    <Poster cs={cs} />
+                    {cs.videoUrl && (
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-black/55 backdrop-blur transition-transform duration-300 group-hover:scale-110">
+                          <Play className="ml-0.5 h-5 w-5 text-white" />
+                        </span>
                       </span>
+                    )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    {cs.industry && (
+                      <span className="text-xs capitalize text-muted-foreground">
+                        {cs.industry}
+                      </span>
+                    )}
+                    <h3 className="mt-1 font-medium">{cs.title}</h3>
+                    {cs.summary && (
+                      <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                        {cs.summary}
+                      </p>
+                    )}
+                    <span className="mt-4 inline-flex items-center gap-1 text-sm text-accent">
+                      {labels.viewProject}
+                      <ArrowUpRight className="h-4 w-4" />
                     </span>
-                  )}
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  {cs.industry && (
-                    <span className="text-xs capitalize text-muted-foreground">{cs.industry}</span>
-                  )}
-                  <h3 className="mt-1 font-medium">{cs.title}</h3>
-                  {cs.summary && (
-                    <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                      {cs.summary}
-                    </p>
-                  )}
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm text-accent">
-                    {labels.viewProject}
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </button>
+                  </div>
+                </button>
+              </GlowCard>
             </Reveal>
           ))}
         </div>
