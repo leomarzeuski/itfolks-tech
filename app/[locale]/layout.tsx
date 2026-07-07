@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { getGlobal } from "@/lib/strapi";
 import { CalInit } from "@/components/cal-init";
 import { PreviewBridge } from "@/components/preview-bridge";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
 import "../globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -79,6 +80,17 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const global = await getGlobal(locale);
 
+  const wa =
+    locale === "pt"
+      ? {
+          label: "Falar no WhatsApp",
+          message: "Olá! Vim pelo site da Automatech e quero saber mais.",
+        }
+      : {
+          label: "Chat on WhatsApp",
+          message: "Hi! I came from the Automatech website and would like to know more.",
+        };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -110,6 +122,7 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
         <CalInit />
         <PreviewBridge />
+        <WhatsAppFloat label={wa.label} message={wa.message} />
       </body>
     </html>
   );
