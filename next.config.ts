@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "http", hostname: "localhost", port: "1337", pathname: "/uploads/**" },
       { protocol: "https", hostname: "**.amazonaws.com" },
+      { protocol: "https", hostname: "strapiautomatech.automatechglobal.com", pathname: "/uploads/**" },
     ],
   },
 };
