@@ -17,6 +17,7 @@ interface BorderGlowProps {
   fillOpacity?: number;
 }
 
+
 function parseHSL(hslStr: string): { h: number; s: number; l: number } {
   const match = hslStr.match(/([\d.]+)\s*([\d.]+)%?\s*([\d.]+)%?/);
   if (!match) return { h: 40, s: 80, l: 80 };
