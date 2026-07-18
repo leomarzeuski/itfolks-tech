@@ -10,10 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
-      alternates: { languages: { en: `${SITE_URL}/`, pt: `${SITE_URL}/pt` } },
+      alternates: { languages: { en: `${SITE_URL}/en`, pt: `${SITE_URL}/` } },
     },
     {
-      url: `${SITE_URL}/pt`,
+      url: `${SITE_URL}/en`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,

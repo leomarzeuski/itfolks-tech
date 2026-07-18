@@ -38,8 +38,8 @@ export async function generateMetadata({
     title,
     description,
     alternates: {
-      canonical: locale === "en" ? "/" : `/${locale}`,
-      languages: { en: "/", pt: "/pt" },
+      canonical: locale === "pt" ? "/" : `/${locale}`,
+      languages: { en: "/en", pt: "/" },
     },
     icons: {
       icon: "/favicon.ico?v=3",
