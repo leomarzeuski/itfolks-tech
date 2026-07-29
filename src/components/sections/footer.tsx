@@ -1,7 +1,7 @@
 import { Linkedin, Twitter, Instagram, Mail, type LucideIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { BrandLogo } from "@/components/ui/brand-logo";
-import type { Global } from "@/types/strapi";
+import type { Global, Social } from "@/types/strapi";
 
 const SOCIAL_ICONS: Record<string, LucideIcon> = {
   github: Instagram,
@@ -13,10 +13,16 @@ const SOCIAL_ICONS: Record<string, LucideIcon> = {
 
 const isInProgress = (url?: string) => !url || url.trim() === "" || url.trim() === "#";
 
+const DEFAULT_SOCIALS: Social[] = [
+  { platform: "linkedin", url: "https://www.linkedin.com/company/automatech-global/?viewAsMember=true" },
+  { platform: "instagram", url: "https://www.instagram.com/automatechgl?igsh=MWN6dW9hb2tlOGs1dw==" },
+];
+
 export async function Footer({ global }: { global: Global }) {
   const t = await getTranslations("common");
   const year = new Date().getFullYear();
   const footer = global.footer;
+  const socials = global.socials && global.socials.length > 0 ? global.socials : DEFAULT_SOCIALS;
 
   return (
     <footer className="border-t border-border px-4 py-12 sm:px-6 lg:px-8">
@@ -61,9 +67,9 @@ export async function Footer({ global }: { global: Global }) {
           <p className="text-xs text-muted-foreground">
             © {year} {global.siteName}
           </p>
-          {global.socials && global.socials.length > 0 && (
+          {socials.length > 0 && (
             <div className="flex items-center gap-4">
-              {global.socials.map((s, i) => {
+              {socials.map((s, i) => {
                 const Ic = SOCIAL_ICONS[s.platform.toLowerCase()] ?? Mail;
 
                 // "Work in progress" socials (empty url or "#") show a popover instead of linking.
