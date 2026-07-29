@@ -1,0 +1,9 @@
+[     997ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.whatsapp.com/data/manifest.json:0
+[    1053ms] [ERROR] Manifest fetch from https://api.whatsapp.com/data/manifest.json failed, code 404 @ https://api.whatsapp.com/send/?phone=5512983152661&text=Hi%21+I+came+from+the+Automatech+website+and+would+like+to+know+more.&type=phone_number&app_absent=0:0
+[    1585ms] [INFO] Launched external handler for 'whatsapp://send/?phone=5512983152661&text=Hi!%20I%20came%20from%20the%20Automatech%20website%20and%20would%20like%20to%20know%20more.&type=phone_number&app_absent=0'. @ https://api.whatsapp.com/send/?phone=5512983152661&text=Hi%21+I+came+from+the+Automatech+website+and+would+like+to+know+more.&type=phone_number&app_absent=0:0
+[    3337ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'. @ :0
+[    4103ms] [ERROR] ErrorUtils caught an error:
+
+[storage] storage bucket persistence denied (aquire-persistent-storage-denied)
+
+Subsequent non-fatal errors won't be logged; see https://fburl.com/debugjs. {column: 17878, clientTime: 1784045251, extra: Object, guardList: Array(0), hash: jbmhmd} @ https://static.whatsapp.net/rsrc.php/v4/yk/r/2-frBWSR0qM.js:79

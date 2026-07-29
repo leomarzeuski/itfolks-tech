@@ -1,10 +1,10 @@
-import { Github, Linkedin, Twitter, Instagram, Mail, type LucideIcon } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Mail, type LucideIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { BrandLogo } from "@/components/ui/brand-logo";
 import type { Global } from "@/types/strapi";
 
 const SOCIAL_ICONS: Record<string, LucideIcon> = {
-  github: Github,
+  github: Instagram,
   linkedin: Linkedin,
   instagram: Instagram,
   twitter: Twitter,
