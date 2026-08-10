@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getGlobal } from "@/lib/strapi";
 import { CalInit } from "@/components/cal-init";
+import { MetaPixel } from "@/components/meta-pixel";
 import { PreviewBridge } from "@/components/preview-bridge";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import "../globals.css";
@@ -113,6 +114,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <MetaPixel />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
